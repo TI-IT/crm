@@ -1,0 +1,20 @@
+.container {
+  margin: 0 10%;
+  color: rgb(63, 25, 124);
+  text-align: center;
+
+  form {
+    margin-top: 20px;
+    text-align: center;
+
+    div {
+      font-size: 24px;
+      padding: 5px;
+      margin-bottom: 1px;
+      font-weight: bold;
+    }
+    label {
+      color: rgb(135, 117, 132);
+    }
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "name": "client",
+  "name": "next-app",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,10 +10,16 @@
   },
   "dependencies": {
     "@next/font": "13.1.1",
+    "clsx": "^1.2.1",
     "eslint": "8.31.0",
     "eslint-config-next": "13.1.1",
     "next": "13.1.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "sass": "^1.57.1"
+  },
+  "devDependencies": {
+    "@types/node": "18.11.18",
+    "@types/react": "18.0.26"
   }
 }
