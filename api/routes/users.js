@@ -6,9 +6,9 @@ router.get('/', (req, res) => {
   res.json({ ok: true, users: '123' });
 });
 
-router.get('/signup', async (req, res) => {
-  await addUserToDb();
-
+router.post('/signup', async (req, res) => {
+  const user = req.body;
+  console.log(user);
   res.json({ ok: true });
 });
 
