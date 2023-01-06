@@ -2,10 +2,15 @@ import React from 'react';
 import Link from 'next/link';
 import styles from './Menu.module.scss';
 
-export const Menu = ({ server_host }) => {
+export const Menu = () => {
   const [loading, setLoading] = React.useState(true);
   const [authorised, setAuthorised] = React.useState(undefined);
   const [role, setRole] = React.useState(undefined);
+
+  const server_host =
+    process.env.NODE_ENV === 'development'
+      ? 'http://localhost:9001'
+      : 'https://crm.servertiit.keenetic.pro';
 
   React.useEffect(() => {
     (async () => {
