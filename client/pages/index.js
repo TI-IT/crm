@@ -8,8 +8,8 @@ export default function Home() {
       <Head>
         <title>Home</title>
       </Head>
-      <Image className={''} src="/next.svg" alt="Next.js Logo" width={180} height={37} priority />
       <Menu />
+      <Image className={''} src="/next.svg" alt="Next.js Logo" width={180} height={37} priority />
     </>
   );
 }

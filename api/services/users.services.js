@@ -4,15 +4,33 @@ const User = require('../models/User');
 
 async function save(user) {
   await dbConnect();
-
   const collection = mongoose.model('users');
-
   await collection.create({
     email: user.email,
     password: user.password,
-    username: 'user' + Date.now(),
+    username: 'user' + new Date().getTime(),
     role: 'user',
   });
 }
 
-module.exports = { save };
+async function getUserByEmailAndPassword(user) {
+  await dbConnect();
+  const collection = mongoose.model('users');
+  const doc = await collection.findOne({ email: user.email, password: user.password });
+  return doc;
+}
+
+async function getAllUsers() {
+  await dbConnect();
+  const collection = mongoose.model('users');
+  const users = await collection.find({});
+  return users;
+}
+
+async function deleteAllUsers() {
+  await dbConnect();
+  const collection = mongoose.model('users');
+  const users = await collection.deleteMany({});
+}
+
+module.exports = { save, getAllUsers, deleteAllUsers, getUserByEmailAndPassword };

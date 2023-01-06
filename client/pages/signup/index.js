@@ -5,7 +5,7 @@ import styles from './Signup.module.scss';
 import { Menu } from '../../conponents/Menu';
 import emailValidator from 'email-validator';
 
-export default function Signup() {
+export default function Signup({ server_host }) {
   const [user, setUser] = React.useState({ email: '', password: '' });
   const [secondPassword, setSecondPassword] = React.useState('');
   const [message, setMessage] = React.useState('');
@@ -34,7 +34,7 @@ export default function Signup() {
       return;
     }
 
-    const res = await fetch('http://localhost:9001/users/signup', {
+    const res = await fetch(server_host + '/users/signup', {
       method: 'post',
       credentials: 'include',
       body: JSON.stringify(user),
@@ -44,8 +44,13 @@ export default function Signup() {
     });
     const data = await res.json();
 
-    console.log(data);
+    if (data.ok) {
+      setMessage('Регистрация прошла успешно. перенаправление в личный кабинет');
+    } else {
+      setMessage('Ошибка попробуйте другие данные');
+    }
   }
+
   return (
     <>
       <Head>
@@ -59,34 +64,37 @@ export default function Signup() {
         <div>{message}</div>
         <form>
           <div>
-            <label>email </label>
             <div>
               <input
                 type={'text'}
                 name={'email'}
                 onChange={(e) => changeUser('email', e.target.value)}
                 value={user.email}
+                placeholder={'email'}
               />
             </div>
           </div>
           <div>
-            <label>Пароль </label>
             <div>
               <input
                 type={'password'}
                 onChange={(e) => changeUser('password', e.target.value)}
                 value={user.password}
+                placeholder={'пароль'}
               />
             </div>
           </div>
           <div>
-            <label>Повторение пароля </label>
             <div>
-              <input type={'password'} onChange={(e) => setSecondPassword(e.target.value)} />
+              <input
+                type={'password'}
+                onChange={(e) => setSecondPassword(e.target.value)}
+                placeholder={'Повторение пароля'}
+              />
             </div>
           </div>
           <div>
-            <button type={'button'} onClick={signUp}>
+            <button type={'button'} onClick={signUp} className={styles.button}>
               Зарегистрироватся
             </button>
           </div>
