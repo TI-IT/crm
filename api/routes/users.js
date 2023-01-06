@@ -5,20 +5,32 @@ const {
   deleteAllUsers,
   getUserByEmailAndPassword,
   getUserById,
-} = require('../services/users.services');
+  updateUser,
+  updateUserPassword,
+} = require('../services/users.service');
 const router = express.Router();
 
 router.get('/', (req, res) => {
   res.json({ ok: true, users: '123' });
 });
 
+router.get('/me', async (req, res) => {
+  const _id = req.session.user._id;
+
+  const user = await getUserById(_id);
+
+  res.json({ ok: true, user: user });
+});
+
 router.get('/get/all', async (req, res) => {
   const users = await getAllUsers();
+
   res.json({ ok: true, users: users });
 });
 
 router.get('/delete/all', async (req, res) => {
   const users = await deleteAllUsers();
+
   res.json({ ok: true, users: users });
 });
 
@@ -32,15 +44,16 @@ router.post('/signup', async (req, res) => {
     await req.session.save();
 
     res.json({ ok: true });
-  } catch (error) {
+  } catch (e) {
+    console.error(e);
     res.json({ ok: false });
-    console.error(error);
   }
 });
 
 router.post('/login', async (req, res) => {
   const user = req.body;
   const doc = await getUserByEmailAndPassword(user);
+
   if (doc) {
     req.session.user = { _id: doc._id };
     await req.session.save();
@@ -56,13 +69,8 @@ router.get('/logout', async (req, res) => {
 
   req.session.destroy();
   res.clearCookie('connect.sid', { path: '/' });
-  res.redirect(domain);
-});
 
-router.get('/me', async (req, res) => {
-  const _id = req.session.user._id;
-  const user = await getUserById(_id);
-  res.json({ ok: true, user: user });
+  res.redirect(domain);
 });
 
 router.post('/check/auth', async (req, res) => {
@@ -70,7 +78,9 @@ router.post('/check/auth', async (req, res) => {
     res.json({ ok: false }).end();
     return;
   }
+
   const _id = req.session.user._id;
+
   const user = await getUserById(_id);
 
   if (user) {
@@ -80,8 +90,42 @@ router.post('/check/auth', async (req, res) => {
   }
 });
 
-router.get('/:id', (req, res) => {
-  res.json({ ok: true, users: req.params.id });
+router.post('/update', async (req, res) => {
+  if (!req.session.user) {
+    res.json({ ok: false }).end();
+    return;
+  }
+
+  const _id = req.session.user._id;
+
+  const user = await getUserById(_id);
+
+  const updatedUser = await updateUser(req.body);
+
+  if (user) {
+    res.json({ ok: true });
+  } else {
+    res.json({ ok: false });
+  }
+});
+
+router.post('/updatePassword', async (req, res) => {
+  if (!req.session.user) {
+    res.json({ ok: false }).end();
+    return;
+  }
+
+  const _id = req.session.user._id;
+
+  const user = await getUserById(_id);
+
+  const updatedUser = await updateUserPassword(req.body);
+
+  if (user) {
+    res.json({ ok: true });
+  } else {
+    res.json({ ok: false });
+  }
 });
 
 module.exports = router;

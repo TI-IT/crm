@@ -35,13 +35,15 @@ export default function Admin({ server_host }) {
       <div className={styles.container}>
         <table className={styles.table}>
           <thead>
-            <td>Емаил</td>
-            <td>Пароль</td>
-            <td>Роль</td>
+            <tr>
+              <th>Емаил</th>
+              <th>Пароль</th>
+              <th>Роль</th>
+            </tr>
           </thead>
           <tbody>
-            {users.map((user) => (
-              <tr>
+            {users.map((user, _id) => (
+              <tr key={_id}>
                 <td>{user.email}</td>
                 <td>{user.password}</td>
                 <td>{user.role}</td>
