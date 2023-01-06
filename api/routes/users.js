@@ -1,5 +1,5 @@
 const express = require('express');
-const { addUserToDb } = require('../services/users.services');
+const { save } = require('../services/users.services');
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -8,8 +8,13 @@ router.get('/', (req, res) => {
 
 router.post('/signup', async (req, res) => {
   const user = req.body;
-  console.log(user);
-  res.json({ ok: true });
+  try {
+    await save(user);
+    res.json({ ok: true });
+  } catch (error) {
+    res.json({ ok: false });
+    console.error(error);
+  }
 });
 
 router.get('/:id', (req, res) => {

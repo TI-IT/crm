@@ -8,7 +8,10 @@ async function dbConnect() {
   let url = 'mongodb://127.0.0.1:27017/crm';
   let options = {
     user: 'adminTiit',
-    pass: 'Tg30121986',
+    pass:
+      process.env.NODE_ENV === 'development '
+        ? process.env.MONGO_DEV_PASSWORD
+        : process.env.MONGO_PRODUCTION_PASSWORD,
     auth: { authSource: 'crm' },
   };
 
@@ -16,5 +19,4 @@ async function dbConnect() {
     console.error(e);
   });
 }
-
 module.exports = dbConnect;
