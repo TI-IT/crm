@@ -2,18 +2,18 @@ import React from 'react';
 import Head from 'next/head';
 import { Menu } from '../../conponents/Menu';
 import styles from './Login.module.scss';
+import { useRouter } from 'next/router';
 
 export default function Login({ server_host }) {
-  const [message, setMessage] = React.useState('');
   const [user, setUser] = React.useState({ email: '', password: '' });
+  const [message, setMessage] = React.useState('');
+  const router = useRouter();
 
   function changeUser(name, value) {
     setUser({
       ...user,
       [name]: value,
     });
-    console.log(user.email);
-    console.log(user.password);
   }
 
   async function login() {
@@ -21,7 +21,6 @@ export default function Login({ server_host }) {
     if (!user.email || !user.password) {
       setMessage('Заполните оба поля');
     }
-
     const res = await fetch(server_host + '/users/login', {
       method: 'post',
       credentials: 'include',
@@ -33,6 +32,7 @@ export default function Login({ server_host }) {
     const data = await res.json();
     if (data.ok) {
       setMessage('Сейчас будет выполнена переадресация');
+      router.push('/dashboard');
     } else {
       setMessage('Ошибка попробуйте другие данные');
     }

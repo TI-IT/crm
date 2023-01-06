@@ -1,0 +1,19 @@
+.table {
+  text-align: left;
+  padding: 5px 8px;
+  border-radius: 4px;
+  margin-bottom: 5px;
+  background-color: #4285f4;
+
+  thead {
+    font-weight: bold;
+    font-size: 20px;
+    color: #5f6368;
+    background-color: #e8eaed;
+  }
+  tbody {
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    background-color: #ffffff;
+  }
+}

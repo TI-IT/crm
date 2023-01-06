@@ -20,7 +20,6 @@ export default function Admin({ server_host }) {
       .then((data) => {
         if (data.ok) {
           setUsers(data.users);
-          console.log(data.users);
         }
       });
   }
@@ -33,7 +32,24 @@ export default function Admin({ server_host }) {
       <div>
         <h2>Пользователи</h2>
       </div>
-      <div>{JSON.stringify(users)}</div>
+      <div className={styles.container}>
+        <table className={styles.table}>
+          <thead>
+            <td>Емаил</td>
+            <td>Пароль</td>
+            <td>Роль</td>
+          </thead>
+          <tbody>
+            {users.map((user) => (
+              <tr>
+                <td>{user.email}</td>
+                <td>{user.password}</td>
+                <td>{user.role}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </>
   );
 }

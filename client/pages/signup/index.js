@@ -4,33 +4,38 @@ import Head from 'next/head';
 import styles from './Signup.module.scss';
 import { Menu } from '../../conponents/Menu';
 import emailValidator from 'email-validator';
+import { useRouter } from 'next/router';
 
 export default function Signup({ server_host }) {
   const [user, setUser] = React.useState({ email: '', password: '' });
   const [secondPassword, setSecondPassword] = React.useState('');
   const [message, setMessage] = React.useState('');
+  const [disabled, setDisabled] = React.useState(false);
+  const router = useRouter('/');
 
   function changeUser(name, value) {
     setUser({
       ...user,
       [name]: value,
     });
-    console.log(user.email);
-    console.log(user.password);
   }
 
   async function signUp() {
+    setDisabled(true);
     setMessage('');
     if (!user.email || !user.password || !secondPassword) {
       setMessage('Заполните все поля');
+      setDisabled(false);
       return;
     }
     if (secondPassword !== user.password) {
       setMessage('Пароли не совпадают');
+      setDisabled(false);
       return;
     }
     if (!emailValidator.validate(user.email)) {
       setMessage('Email не корректный');
+      setDisabled(false);
       return;
     }
 
@@ -46,7 +51,9 @@ export default function Signup({ server_host }) {
 
     if (data.ok) {
       setMessage('Регистрация прошла успешно. перенаправление в личный кабинет');
+      router.push('/dashboard');
     } else {
+      setDisabled(false);
       setMessage('Ошибка попробуйте другие данные');
     }
   }
@@ -94,7 +101,7 @@ export default function Signup({ server_host }) {
             </div>
           </div>
           <div>
-            <button type={'button'} onClick={signUp} className={styles.button}>
+            <button type={'button'} onClick={signUp} className={styles.button} disabled={disabled}>
               Зарегистрироватся
             </button>
           </div>

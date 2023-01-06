@@ -28,7 +28,7 @@ if (process.env.NODE_ENV === 'development ') {
 
 app.use(
   sessions({
-    secret: 'nvebiruvwnerfqruec3ce',
+    secret: 'nvebiruvwnerfqruec3cetiit',
     store: MongoStore.create({
       mongoUrl: mongoUrl,
       ttl: 60 * 24 * 60 * 60,

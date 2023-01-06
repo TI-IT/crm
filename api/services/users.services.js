@@ -33,4 +33,11 @@ async function deleteAllUsers() {
   const users = await collection.deleteMany({});
 }
 
-module.exports = { save, getAllUsers, deleteAllUsers, getUserByEmailAndPassword };
+async function getUserById(_id) {
+  await dbConnect();
+  const collection = mongoose.model('users');
+  const user = await collection.findOne({ _id: _id });
+  return user;
+}
+
+module.exports = { save, getAllUsers, deleteAllUsers, getUserByEmailAndPassword, getUserById };
