@@ -10,7 +10,7 @@ const MongoStore = require('connect-mongo');
 app.use(
   cors({
     credentials: true,
-    origin: ['http://localhost:3000', 'https://test_pubgmoney.ru'],
+    origin: ['http://localhost:3000', 'https://yougile.com'],
   }),
 );
 
