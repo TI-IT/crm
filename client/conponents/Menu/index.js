@@ -36,7 +36,8 @@ export const Menu = () => {
   return (
     <div className={styles.menu}>
       <Link href={'/'}>Главная</Link>
-      <Link href={'/yougile'}>YouGile</Link>
+      <Link href={'/clients'}>Клиенты</Link>
+      <Link href={'/tasks'}>Карточки</Link>
       <Link href={'/dashboard'}>Личный кабинет</Link>
       {!authorised && <Link href={'/login'}>Вход</Link>}
       <Link href={'/signup'}>Регистрация</Link>

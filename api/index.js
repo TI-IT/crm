@@ -43,6 +43,8 @@ app.use(
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const clientsRouter = require('./routes/clients');
+const tasksRouter = require('./routes/tasks');
 const allRouter = require('./routes/all');
 
 app.use(logger('dev'));
@@ -50,6 +52,8 @@ app.use(express.json());
 app.use('*', allRouter);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/clients', clientsRouter);
+app.use('/tasks', tasksRouter);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
