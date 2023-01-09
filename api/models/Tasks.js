@@ -3,21 +3,49 @@ const Schema = mongoose.Schema;
 
 const schema = new mongoose.Schema(
   {
-    email: {
-      type: String,
-      unique: true,
-      require: true,
-    },
-    password: {
+    // ID объекта
+    id: {
       type: String,
     },
-    username: {
-      type: String,
-      unique: true,
+    // Если true, значит объект удален
+    deleted: {
+      type: Boolean,
     },
-    role: {
+    // Название задачи
+    title: {
       type: String,
-      default: 'user',
+    },
+    // Время создания задачи
+    timestamp: {
+      type: Number,
+    },
+    // Id колонки родителя
+    columnId: {
+      type: String,
+    },
+    // Описание задачи
+    description: {
+      type: String,
+    },
+    // Задача перенесена в архив - да/нет
+    archived: {
+      type: Boolean,
+    },
+    // Задача выполнена - да/нет
+    completed: {
+      type: Boolean,
+    },
+    // Массив Id подзадач
+    subtasks: {
+      type: Array,
+    },
+    // Массив Id пользователей, на которых назначена задача
+    assigned: {
+      type: Array,
+    },
+    // Id пользователя, который создал задачу
+    createdBy: {
+      type: String,
     },
   },
   { autoCreate: true },
