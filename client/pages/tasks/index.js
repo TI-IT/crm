@@ -7,9 +7,29 @@ import { Menu } from '../../conponents/Menu';
 export default function Dashboard({ server_host }) {
   const [loading, setLoading] = React.useState(true);
   const [needAuth, setNeedAuth] = React.useState(false);
+  const [tasks, setTasks] = React.useState([]);
   const [user, setUser] = React.useState({ username: '', password: '' });
   const [message, setMessage] = React.useState('');
   const [disabled, setDisabled] = React.useState(false);
+
+  React.useEffect(loadTasks, []);
+
+  function loadTasks() {
+    fetch(server_host + '/tasks/getalltasks', {
+      method: 'get',
+      credentials: 'include',
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        if (data.ok) {
+          setTasks(data);
+        }
+      });
+  }
+
+  console.log(tasks);
 
   React.useEffect(() => {
     (async () => {
@@ -18,8 +38,8 @@ export default function Dashboard({ server_host }) {
   }, []);
 
   async function checkAuth() {
-    const res = await fetch(server_host + '/users/check/auth', {
-      method: 'post',
+    const res = await fetch(server_host + '/tasks/getalltasks', {
+      method: 'get',
       credentials: 'include',
     });
     const data = await res.json();
@@ -121,6 +141,25 @@ export default function Dashboard({ server_host }) {
         <h2>Карточки</h2>
       </div>
       <div className={styles.container}>
+        <table className={styles.table}>
+          <thead>
+            <tr>
+              <th>Емаил</th>
+              <th>Пароль</th>
+              <th>Роль</th>
+            </tr>
+          </thead>
+          <tbody>
+            {tasks.map((task, id) => (
+              <tr key={id}>
+                <td>{tasks[task].id}</td>
+                <td>{tasks[task].title}</td>
+                <td>{tasks[task].createdBy}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <div>************************************</div>
         <div>{message}</div>
         <table className={styles.table}>
           <thead>

@@ -11,6 +11,9 @@ const {
 } = require('../../services/taskService/tasks.service.js');
 
 const router = express.Router();
+router.get('/', async (req, res) => {
+  res.json({ ok: true, task: 'TASKS' });
+});
 
 router.get('/getalltasks', (req, res) => {
   fetch('https://yougile.com/api-v2/tasks', {
