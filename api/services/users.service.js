@@ -4,11 +4,8 @@ const User = require('../models/User');
 
 async function save(user) {
   await dbConnect();
-
   const collection = mongoose.model('users');
-
   const username = 'user' + new Date().getTime();
-  console.log({ username });
 
   await collection.create({
     email: user.email,
