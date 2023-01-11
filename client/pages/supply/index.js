@@ -4,39 +4,40 @@ import Head from 'next/head';
 import styles from './Task.module.scss';
 import { Menu } from '../../conponents/Menu';
 
-export default function Tasks({ server_host }) {
-  const [tasks, setTasks] = React.useState([]);
+export default function Supply({ server_host }) {
+  const [products, setProducts] = React.useState([]);
 
-  React.useEffect(loadTasks, []);
+  React.useEffect(test, []);
 
-  function loadTasks() {
-    fetch(server_host + '/tasks/getalltasks', {
-      method: 'get',
-      credentials: 'include',
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        if (data) {
-          setTasks(data.tasks);
-        }
-      });
+  function test() {
+    // fetch(server_host + '/tasks/getalltasks', {
+    //   method: 'get',
+    //   credentials: 'include',
+    // })
+    //   .then((res) => {
+    //     return res.json();
+    //   })
+    //   .then((data) => {
+    //     if (data) {
+    //       setTasks(data.tasks);
+    //     }
+    //   });
   }
 
   return (
     <>
       <Head>
-        <title>Карточки</title>
+        <title>Снабжение</title>
       </Head>
       <Menu />
       <div className={styles.container}>
-        <h1>Редактируем страницу карточки</h1>
+        <h1>Снабжение</h1>
         <h3>
           Урок 12. JavaScript. Методы массивов (forEach, map, filter, reduce, find, findIndex). Js
           Массивы. https://www.youtube.com/watch?v=nEabP9CYCAQ&t=726s
         </h3>
-        <h2>Карточки</h2>
+        <h1>supply</h1>
+        <h2>Коммерческое предложение</h2>
         <div>
           <a href="https://yougile.com/api-v2#/">YOUGILE API2</a>
         </div>
@@ -54,19 +55,7 @@ export default function Tasks({ server_host }) {
               <th>Массив Id подзадач</th>
             </tr>
           </thead>
-          <tbody>
-            {tasks.map((task, id) => (
-              <tr key={id}>
-                <td>{task.id}</td>
-                <td>{task.title}</td>
-                <td>{task.description}</td>
-                <td>{task.timestamp}</td>
-                <td>{task.columnId}</td>
-                <td>{task.completed}</td>
-                <td>{task.subtasks}</td>
-              </tr>
-            ))}
-          </tbody>
+          <tbody></tbody>
         </table>
       </div>
     </>
