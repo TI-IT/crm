@@ -1,8 +1,10 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import Head from 'next/head';
 import styles from './Task.module.scss';
 import { Menu } from '../../conponents/Menu';
+import logoImage from '../../public/logo/logo.png';
 
 export default function Supply({ server_host }) {
   const [products, setProducts] = React.useState([]);
@@ -30,33 +32,81 @@ export default function Supply({ server_host }) {
         <title>Снабжение</title>
       </Head>
       <Menu />
-      <div className={styles.container}>
-        <h1>Снабжение</h1>
-        <h3>
-          Урок 12. JavaScript. Методы массивов (forEach, map, filter, reduce, find, findIndex). Js
-          Массивы. https://www.youtube.com/watch?v=nEabP9CYCAQ&t=726s
-        </h3>
-        <h1>supply</h1>
-        <h2>Коммерческое предложение</h2>
-        <div>
-          <a href="https://yougile.com/api-v2#/">YOUGILE API2</a>
+      <div className={styles.containerTable}>
+        <div className={styles.tableResponsive}>
+          <table className={styles.table}>
+            <thead>
+              <tr>
+                <th>№ПП</th>
+                <th>Код</th>
+                <th>Наименование</th>
+                <th>Отделка</th>
+                <th>Кол-во</th>
+                <th>Ед. изм.</th>
+                <th>Цена руб.</th>
+                <th>Сумма руб.</th>
+                <th>Рисунок</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Body №ПП</td>
+                <td>Body Код</td>
+                <td>Body Наименование</td>
+                <td>Body Отделка</td>
+                <td>Body Кол-во</td>
+                <td>Body Ед. изм.</td>
+                <td>Body Цена руб.</td>
+                <td>Body Сумма руб.</td>
+                <td>Body Рисунок</td>
+              </tr>
+              <tr>
+                <td>Body №ПП</td>
+                <td>Body Код</td>
+                <td>Body Наименование</td>
+                <td>Body Отделка</td>
+                <td>Body Кол-во</td>
+                <td>Body Ед. изм.</td>
+                <td>Body Цена руб.</td>
+                <td>Body Сумма руб.</td>
+                <td>Body Рисунок</td>
+              </tr>
+              <tr>
+                <td>Body №ПП</td>
+                <td>Body Код</td>
+                <td>Body Наименование</td>
+                <td>Body Отделка</td>
+                <td>Body Кол-во</td>
+                <td>Body Ед. изм.</td>
+                <td>Body Цена руб.</td>
+                <td>Body Сумма руб.</td>
+                <td>Body Рисунок</td>
+              </tr>
+              <tr>
+                <td>Body №ПП</td>
+                <td>Body Код</td>
+                <td>Body Наименование</td>
+                <td>Body Отделка</td>
+                <td>Body Кол-во</td>
+                <td>Body Ед. изм.</td>
+                <td>Body Цена руб.</td>
+                <td>Body Сумма руб.</td>
+                <td>Body Рисунок</td>
+              </tr>
+              <tr>
+                <td>Body №ПП</td>
+                <td>Body Код</td>
+                <td>Body Наименование</td>
+                <td>Body Отделка</td>
+                <td>Body Кол-во</td>
+                <td>Body Ед. изм.</td>
+                <td>Body Цена руб.</td>
+                <td>Body Сумма руб.</td>
+                <td>Body Рисунок</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-      </div>
-      <div className={styles.container}>
-        <table className={styles.table}>
-          <thead>
-            <tr>
-              <th>id</th>
-              <th>Название</th>
-              <th>Описание задачи</th>
-              <th>Время создания задачи</th>
-              <th>Id колонки родителя</th>
-              <th>Задача выполнена</th>
-              <th>Массив Id подзадач</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
       </div>
     </>
   );
