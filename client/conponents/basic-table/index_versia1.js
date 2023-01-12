@@ -2,10 +2,10 @@ import React from 'react';
 import styles from './BasicTable.module.scss';
 import { useTable } from 'react-table';
 import STUDENTS from './student.json';
-import { COLUMNS, GROUPPED__COLUMNS } from './../columns';
+import { COLUMNS } from './../columns';
 
 export const BasicTable = () => {
-  const columns = React.useMemo(() => GROUPPED__COLUMNS, []);
+  const columns = React.useMemo(() => COLUMNS, []);
   const data = React.useMemo(() => STUDENTS, []);
 
   const { getTableProps, getTableBodyProps, headerGroups, footerGroups, rows, prepareRow } =
@@ -18,9 +18,6 @@ export const BasicTable = () => {
     <>
       <div>
         <h1>BasicTable</h1>
-        <a href="https://www.youtube.com/watch?v=n4vgItNB_ac&list=PLC3y8-rFHvwgWTSrDiwmUsl4ZvipOw9Cz&index=5">
-          Lesson
-        </a>
       </div>
       <table {...getTableProps()} className={styles.table}>
         <thead>
@@ -44,6 +41,15 @@ export const BasicTable = () => {
             );
           })}
         </tbody>
+        <tfoot>
+          {footerGroups.map((footerGroup) => (
+            <tr {...footerGroup.getFooterGroupProps()}>
+              {footerGroup.headers.map((column) => (
+                <td {...column.getFooterProps}>{column.render('Footer')}</td>
+              ))}
+            </tr>
+          ))}
+        </tfoot>
       </table>
     </>
   );
