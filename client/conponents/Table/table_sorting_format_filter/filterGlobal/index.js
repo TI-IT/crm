@@ -2,8 +2,8 @@ import React from 'react';
 import styles from './BasicTable.module.scss';
 import { useTable, useSortBy, useGlobalFilter } from 'react-table';
 import STUDENTS from './student.json';
-import { COLUMNS } from './../columns';
-import { FilterGlobal } from './../filterGlobal';
+import { COLUMNS } from '../../columns';
+import { FilterGlobal } from '../../filter/filterGlobal';
 
 export const SortingFormatFilterTable = () => {
   const columns = React.useMemo(() => COLUMNS, []);
