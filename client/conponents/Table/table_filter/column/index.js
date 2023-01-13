@@ -1,34 +1,56 @@
 import React from 'react';
 import styles from './BasicTable.module.scss';
-import { useTable, useSortBy } from 'react-table';
-import STUDENTS from '../student.json';
+import { useTable, useSortBy, useGlobalFilter, useFilters } from 'react-table';
+import STUDENTS from '../../student.json';
 import { COLUMNS } from './columns';
+import { GlobalFilter } from './filter/global';
+import { FilterColumn } from './filter/column';
 
-export const SortingTable = () => {
+export const FilteringTableColumn = () => {
   const columns = React.useMemo(() => COLUMNS, []);
   const data = React.useMemo(() => STUDENTS, []);
 
-  const { getTableProps, getTableBodyProps, headerGroups, footerGroups, rows, prepareRow } =
-    useTable(
-      {
-        columns,
-        data,
-      },
-      useSortBy,
-    );
+  const defaultColumn = React.useMemo(() => {
+    return {
+      Filter: FilterColumn,
+    };
+  }, []);
+
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    footerGroups,
+    rows,
+    prepareRow,
+    state,
+    setGlobalFilter,
+  } = useTable(
+    {
+      columns,
+      data,
+      defaultColumn,
+    },
+    useFilters,
+    useGlobalFilter,
+    useSortBy,
+  );
+
+  const { globalFilter } = state;
 
   return (
     <>
       <div>
-        <h1>SortingTable</h1>
+        <h1>FilteringTableColumn</h1>
         <button>
-          <a href="https://www.youtube.com/watch?v=zypbcG3ZVnc&list=PLC3y8-rFHvwgWTSrDiwmUsl4ZvipOw9Cz&index=6">
-            React Table Tutorial - 6 - Sorting
+          <a href="https://www.youtube.com/watch?v=2U9eVClAqh0&list=PLC3y8-rFHvwgWTSrDiwmUsl4ZvipOw9Cz&index=9">
+            React Table Tutorial - 9 - Column Filtering
           </a>
         </button>
 
         <hr></hr>
       </div>
+      <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
       <table {...getTableProps()} className={styles.table}>
         <thead>
           {headerGroups.map((headerGroup, id) => (
@@ -36,6 +58,7 @@ export const SortingTable = () => {
               {headerGroup.headers.map((column, id) => (
                 <th key={id} {...column.getHeaderProps(column.getSortByToggleProps())}>
                   {column.render('Header')}
+                  <div>{column.canFilter ? column.render('Filter') : null}</div>
                   <span>{column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : ''}</span>
                 </th>
               ))}

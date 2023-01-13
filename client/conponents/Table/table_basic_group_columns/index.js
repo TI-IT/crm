@@ -1,29 +1,26 @@
 import React from 'react';
 import styles from './BasicTable.module.scss';
-import { useTable, useSortBy } from 'react-table';
+import { useTable } from 'react-table';
 import STUDENTS from '../student.json';
-import { COLUMNS } from './columns';
+import { GROUP_COLUMNS } from './columns';
 
-export const SortingTable = () => {
-  const columns = React.useMemo(() => COLUMNS, []);
+export const BasicTableGroupColumns = () => {
+  const columns = React.useMemo(() => GROUP_COLUMNS, []);
   const data = React.useMemo(() => STUDENTS, []);
 
   const { getTableProps, getTableBodyProps, headerGroups, footerGroups, rows, prepareRow } =
-    useTable(
-      {
-        columns,
-        data,
-      },
-      useSortBy,
-    );
+    useTable({
+      columns,
+      data,
+    });
 
   return (
     <>
       <div>
-        <h1>SortingTable</h1>
+        <h1>BasicTableGroupColumns</h1>
         <button>
-          <a href="https://www.youtube.com/watch?v=zypbcG3ZVnc&list=PLC3y8-rFHvwgWTSrDiwmUsl4ZvipOw9Cz&index=6">
-            React Table Tutorial - 6 - Sorting
+          <a href="https://www.youtube.com/watch?v=n4vgItNB_ac&list=PLC3y8-rFHvwgWTSrDiwmUsl4ZvipOw9Cz&index=5">
+            React Table Tutorial - 5 - Header Groups
           </a>
         </button>
 
@@ -34,9 +31,8 @@ export const SortingTable = () => {
           {headerGroups.map((headerGroup, id) => (
             <tr key={id} {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column, id) => (
-                <th key={id} {...column.getHeaderProps(column.getSortByToggleProps())}>
+                <th key={id} {...column.getHeaderProps()}>
                   {column.render('Header')}
-                  <span>{column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : ''}</span>
                 </th>
               ))}
             </tr>

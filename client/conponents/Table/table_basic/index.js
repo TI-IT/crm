@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './BasicTable.module.scss';
 import { useTable } from 'react-table';
-import STUDENTS from './student.json';
-import { COLUMNS } from './../columns';
+import STUDENTS from '../student.json';
+import { COLUMNS } from './columns';
 
 export const BasicTable = () => {
   const columns = React.useMemo(() => COLUMNS, []);
@@ -18,38 +18,42 @@ export const BasicTable = () => {
     <>
       <div>
         <h1>BasicTable</h1>
+        <button>
+          <a href="https://www.youtube.com/watch?v=hson9BXU9F8&list=PLC3y8-rFHvwgWTSrDiwmUsl4ZvipOw9Cz&index=3">
+            React Table Tutorial - 3 - Basic Table
+          </a>
+        </button>
+
+        <hr></hr>
       </div>
       <table {...getTableProps()} className={styles.table}>
         <thead>
-          {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column) => (
-                <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+          {headerGroups.map((headerGroup, id) => (
+            <tr key={id} {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map((column, id) => (
+                <th key={id} {...column.getHeaderProps()}>
+                  {column.render('Header')}
+                </th>
               ))}
             </tr>
           ))}
         </thead>
         <tbody {...getTableBodyProps()}>
-          {rows.map((row) => {
+          {rows.map((row, id) => {
             prepareRow(row);
             return (
-              <tr {...row.getRowProps()}>
-                {row.cells.map((cell) => {
-                  return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>;
+              <tr key={id} {...row.getRowProps()}>
+                {row.cells.map((cell, id) => {
+                  return (
+                    <td key={id} {...cell.getCellProps()}>
+                      {cell.render('Cell')}
+                    </td>
+                  );
                 })}
               </tr>
             );
           })}
         </tbody>
-        <tfoot>
-          {footerGroups.map((footerGroup) => (
-            <tr {...footerGroup.getFooterGroupProps()}>
-              {footerGroup.headers.map((column) => (
-                <td {...column.getFooterProps}>{column.render('Footer')}</td>
-              ))}
-            </tr>
-          ))}
-        </tfoot>
       </table>
     </>
   );

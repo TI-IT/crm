@@ -1,34 +1,47 @@
 import React from 'react';
 import styles from './BasicTable.module.scss';
-import { useTable, useSortBy } from 'react-table';
-import STUDENTS from '../student.json';
+import { useTable, useSortBy, useGlobalFilter } from 'react-table';
+import STUDENTS from '../../student.json';
 import { COLUMNS } from './columns';
+import { GlobalFilter } from './filter/global';
 
-export const SortingTable = () => {
+export const FilteringTable = () => {
   const columns = React.useMemo(() => COLUMNS, []);
   const data = React.useMemo(() => STUDENTS, []);
 
-  const { getTableProps, getTableBodyProps, headerGroups, footerGroups, rows, prepareRow } =
-    useTable(
-      {
-        columns,
-        data,
-      },
-      useSortBy,
-    );
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    footerGroups,
+    rows,
+    prepareRow,
+    state,
+    setGlobalFilter,
+  } = useTable(
+    {
+      columns,
+      data,
+    },
+    useGlobalFilter,
+    useSortBy,
+  );
+
+  const { globalFilter } = state;
 
   return (
     <>
       <div>
-        <h1>SortingTable</h1>
+        <h1>FilteringTable</h1>
         <button>
-          <a href="https://www.youtube.com/watch?v=zypbcG3ZVnc&list=PLC3y8-rFHvwgWTSrDiwmUsl4ZvipOw9Cz&index=6">
-            React Table Tutorial - 6 - Sorting
+          <a href="https://www.youtube.com/watch?v=GsDP1bLoIQU&list=PLC3y8-rFHvwgWTSrDiwmUsl4ZvipOw9Cz&index=8">
+            React Table Tutorial - 8 - Global Filtering
           </a>
         </button>
 
         <hr></hr>
       </div>
+      <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
       <table {...getTableProps()} className={styles.table}>
         <thead>
           {headerGroups.map((headerGroup, id) => (

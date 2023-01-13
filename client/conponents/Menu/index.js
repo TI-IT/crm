@@ -48,6 +48,7 @@ export const Menu = () => {
       <Link href={'https://js-course.ru/courses/show/62b1824805964a1386560a8e'}>
         Lesson 3.11.17
       </Link>
+      <Link href={'/directory'}>Справочник</Link>
     </div>
   );
 };

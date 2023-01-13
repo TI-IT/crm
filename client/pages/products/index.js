@@ -16,14 +16,7 @@ export default function Products({ server_host }) {
         <title>Товары</title>
       </Head>
       <Menu />
-      <a href="https://www.youtube.com/watch?v=2U9eVClAqh0&list=PLC3y8-rFHvwgWTSrDiwmUsl4ZvipOw9Cz&index=9">
-        LESSON
-      </a>
-      <BasicTable />
-      <SortingTable />
-      <SortingFormatTable />
-      <SortingFormatFilterTable />
-      <SortingFormatFilterColumnTable />
+      <h1>Products</h1>
     </>
   );
 }
