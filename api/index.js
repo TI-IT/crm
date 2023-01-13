@@ -46,6 +46,7 @@ const usersRouter = require('./routes/users');
 const clientsRouter = require('./routes/clients');
 const tasksRouter = require('./routes/tasks');
 const allRouter = require('./routes/all');
+const productsRouter = require('./routes/products');
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -54,6 +55,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/clients', clientsRouter);
 app.use('/tasks', tasksRouter);
+app.use('/products', productsRouter);
 
 app.listen(port, () => {
   console.log(`http://localhost:${port}`);

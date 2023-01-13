@@ -29,7 +29,7 @@ export default function Supply({ server_host }) {
   return (
     <>
       <Head>
-        <title>Снабжение</title>
+        <title>Снабжение Supply</title>
       </Head>
       <Menu />
       <div className={styles.containerTable}>
