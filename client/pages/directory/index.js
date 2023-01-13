@@ -8,6 +8,7 @@ import { BasicTableGroupColumns } from './../../conponents/Table/table_basic_gro
 import { SortingTable } from './../../conponents/Table/table_sorting';
 import { FilteringTable } from './../../conponents/Table/table_filter/global';
 import { FilteringTableColumn } from './../../conponents/Table/table_filter/column';
+import { PaginationTable } from './../../conponents/Table/table_pagination';
 
 export default function Directory({ server_host }) {
   return (
@@ -21,10 +22,7 @@ export default function Directory({ server_host }) {
       <SortingTable />
       <FilteringTable />
       <FilteringTableColumn />
-      {/* <SortingTable />
-      <SortingFormatTable />
-      <SortingFormatFilterTable />
-      <SortingFormatFilterColumnTable /> */}
+      <PaginationTable />
     </>
   );
 }
