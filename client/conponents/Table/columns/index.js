@@ -1,3 +1,5 @@
+import { format } from 'date-fns';
+
 export const COLUMNS = [
   {
     Header: 'Id',
@@ -28,11 +30,17 @@ export const COLUMNS = [
     Header: 'Phone',
     Footer: 'Phone',
     accessor: 'phone',
+    Cell: ({ value }) => {
+      return value + ' text';
+    },
   },
   {
     Header: 'Date',
     Footer: 'Date',
     accessor: 'date_of_birth',
+    Cell: ({ value }) => {
+      return format(new Date(value), 'dd.MM.yyyy' + 'г.');
+    },
   },
 ];
 
