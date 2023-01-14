@@ -8,6 +8,7 @@ export default function TableaddClients({ server_host }) {
     name: 'Имя',
     patronymic: 'Отчество',
     phone: 'Телефон',
+    email: 'Email',
     organization: 'Организация',
     city: 'Город',
     address: 'Адрес',
@@ -18,6 +19,7 @@ export default function TableaddClients({ server_host }) {
     name: '',
     patronymic: '',
     phone: '',
+    email: '',
     organization: '',
     city: '',
     address: '',
@@ -38,16 +40,13 @@ export default function TableaddClients({ server_host }) {
     setDisabled(true);
     setMessage('');
     if (
-      !clients.surname ||
       !clients.name ||
-      !clients.patronymic ||
       !clients.phone ||
       !clients.organization ||
       !clients.city ||
-      !clients.address ||
-      !clients.notes
+      !clients.address
     ) {
-      setMessage('Заполните все поля');
+      setMessage('Заполните нужные поля поля');
       setDisabled(false);
       return;
     }
@@ -63,8 +62,20 @@ export default function TableaddClients({ server_host }) {
     const data = await res.json();
     if (data.ok) {
       setMessage('Клиент добавлен');
-      // loadClients(); //************************************************************************************************************ */
-      // router.push('/dashboard');
+      // loadClients(); //*************************** */
+      setDisabled(false);
+      setClients({
+        surname: '',
+        name: '',
+        patronymic: '',
+        phone: '',
+        email: '',
+        organization: '',
+        city: '',
+        address: '',
+        notes: '',
+      });
+      router.push('/clients');
     } else {
       setDisabled(false);
       setMessage('Ошибка попробуйте другие данные');
@@ -82,9 +93,11 @@ export default function TableaddClients({ server_host }) {
           <table className={styles.table}>
             <thead>
               <tr>
-                {Object.values(titles).map((i, id) => (
-                  <th key={id}>{i}</th>
-                ))}
+                <th>{titles.surname}</th>
+                <th>{titles.name}</th>
+                <th>{titles.patronymic}</th>
+                <th>{titles.phone}</th>
+                <th>{titles.email}</th>
               </tr>
             </thead>
             <tbody>
@@ -100,6 +113,7 @@ export default function TableaddClients({ server_host }) {
                 </td>
                 <td>
                   <input
+                    className={styles.red}
                     type={'text'}
                     name={'name'}
                     placeholder={'Имя'}
@@ -118,6 +132,7 @@ export default function TableaddClients({ server_host }) {
                 </td>
                 <td>
                   <input
+                    className={styles.red}
                     type={'number'}
                     name={'phone'}
                     placeholder={'Телефон'}
@@ -127,6 +142,35 @@ export default function TableaddClients({ server_host }) {
                 </td>
                 <td>
                   <input
+                    className={styles.red}
+                    type={'text'}
+                    name={'email'}
+                    placeholder={'Email'}
+                    onChange={(e) => changeClients('email', e.target.value)}
+                    value={clients.email}
+                  ></input>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <br></br>
+        <br></br>
+        <div className={styles.tableResponsive}>
+          <table className={styles.table}>
+            <thead>
+              <tr>
+                <th>{titles.organization}</th>
+                <th>{titles.city}</th>
+                <th>{titles.address}</th>
+                <th>{titles.notes}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className={styles.red}>
+                  <input
+                    className={styles.textarea}
                     type={'text'}
                     name={'organization'}
                     placeholder={'Организация'}
@@ -134,8 +178,9 @@ export default function TableaddClients({ server_host }) {
                     value={clients.organization}
                   ></input>
                 </td>
-                <td>
+                <td className={styles.red}>
                   <input
+                    className={styles.textarea}
                     type={'text'}
                     name={'city'}
                     placeholder={'Город'}
@@ -143,23 +188,25 @@ export default function TableaddClients({ server_host }) {
                     value={clients.city}
                   ></input>
                 </td>
-                <td>
-                  <input
+                <td className={styles.red}>
+                  <textarea
+                    className={styles.textarea}
                     type={'text'}
                     name={'address'}
                     placeholder={'Адрес'}
                     onChange={(e) => changeClients('address', e.target.value)}
                     value={clients.address}
-                  ></input>
+                  ></textarea>
                 </td>
                 <td>
-                  <input
+                  <textarea
+                    className={styles.textarea}
                     type={'text'}
                     name={'notes'}
                     placeholder={'Примечания'}
                     onChange={(e) => changeClients('notes', e.target.value)}
                     value={clients.notes}
-                  ></input>
+                  ></textarea>
                 </td>
               </tr>
             </tbody>
@@ -168,9 +215,16 @@ export default function TableaddClients({ server_host }) {
       </div>
       <br></br>
       <div>
-        <button type={'button'} onClick={addClients} className={styles.button} disabled={disabled}>
-          Добавить
-        </button>
+        <div className={styles.container}>
+          <button
+            type={'button'}
+            onClick={addClients}
+            className={styles.button}
+            disabled={disabled}
+          >
+            Добавить
+          </button>
+        </div>
       </div>
     </>
   );

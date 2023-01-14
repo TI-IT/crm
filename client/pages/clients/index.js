@@ -1,17 +1,11 @@
 import React from 'react';
-import Link from 'next/link';
 import Head from 'next/head';
-import styles from './clients.module.scss';
+import styles from './Clients.module.scss';
 import { Menu } from '../../conponents/Menu';
-import { useRouter } from 'next/router';
 import ClientsPage from '../../crm/clients/page';
 
 export default function Clients({ server_host }) {
   const [clients, setClients] = React.useState([]);
-  const [secondPassword, setSecondPassword] = React.useState('');
-  const [message, setMessage] = React.useState('');
-  const [disabled, setDisabled] = React.useState(false);
-  const router = useRouter('/');
 
   async function getClients() {
     setDisabled(true);

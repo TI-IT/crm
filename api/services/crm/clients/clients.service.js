@@ -1,20 +1,21 @@
-const dbConnect = require('./dbConnect');
+const dbConnect = require('../../dbConnect');
 const mongoose = require('mongoose');
-const Client = require('../models/Client');
+const Client = require('../../../models/crm/Client');
 
 async function save(client) {
   await dbConnect();
-
   const collection = mongoose.model('clients');
 
-  const clientname = 'client' + new Date().getTime();
-  console.log({ clientname });
-
   await collection.create({
+    surname: client.surname,
+    name: client.name,
+    patronymic: client.patronymic,
+    phone: client.phone,
     email: client.email,
-    password: client.password,
-    clientname: clientname,
-    role: 'client',
+    organization: client.organization,
+    city: client.city,
+    address: client.address,
+    notes: client.notes,
   });
 }
 
@@ -24,13 +25,6 @@ async function getAllClients() {
 
   const clients = await collection.find({});
   return clients;
-}
-
-async function deleteAllClients() {
-  await dbConnect();
-  const collection = mongoose.model('clients');
-
-  const clients = await collection.deleteMany({});
 }
 
 async function getClientByEmailAndPassword(client) {
@@ -61,23 +55,7 @@ async function updatClient(client) {
   return doc;
 }
 
-async function updateClientPassword(client) {
-  await dbConnect();
-  const collection = mongoose.model('clients');
-  const doc = await collection.findOne({ _id: client._id });
-
-  doc['password'] = client.password;
-
-  await doc.save();
-  return doc;
-}
-
 module.exports = {
   save,
   getAllClients,
-  deleteAllClients,
-  getClientByEmailAndPassword,
-  getClientById,
-  updatClient,
-  updateClientPassword,
 };

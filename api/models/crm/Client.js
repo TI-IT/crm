@@ -10,9 +10,7 @@ const schema = new mongoose.Schema(
       type: String,
     },
     phone: {
-      type: String,
-      unique: true,
-      require: true,
+      type: Number,
     },
     organization: {
       type: String,
