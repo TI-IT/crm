@@ -1,15 +1,11 @@
 import React from 'react';
 import styles from './BasicTable.module.scss';
 import { useTable, usePagination } from 'react-table';
-import STUDENTS from '../data/student.json';
 import { COLUMNS } from './columns';
-import ProductsData from '../data';
 
-export const TableProducts = ({ server_host }) => {
-  const dataProducts = ProductsData(server_host);
+export const TableGetProducts = ({ server_host, products }) => {
   const columns = React.useMemo(() => COLUMNS, []);
-  const data = React.useMemo(() => STUDENTS, []);
-
+  const data = products;
   const {
     getTableProps,
     getTableBodyProps,
@@ -29,7 +25,6 @@ export const TableProducts = ({ server_host }) => {
     },
     usePagination,
   );
-
   const { pageIndex } = state;
 
   return (
@@ -66,6 +61,7 @@ export const TableProducts = ({ server_host }) => {
           })}
         </tbody>
       </table>
+      <br></br>
       <div>
         <span>
           Page{' '}

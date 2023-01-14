@@ -19,6 +19,14 @@ async function save(product) {
   });
 }
 
+async function getAllProducts() {
+  await dbConnect();
+  const collection = mongoose.model('products');
+  const products = await collection.find({});
+  return products;
+}
+
 module.exports = {
   save,
+  getAllProducts,
 };

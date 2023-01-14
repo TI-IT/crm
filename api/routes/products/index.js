@@ -1,6 +1,6 @@
 const express = require('express');
 
-const { save } = require('../../services/crm/products/products.service.js');
+const { save, getAllProducts } = require('../../services/crm/products/products.service.js');
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -17,6 +17,11 @@ router.post('/add', async (req, res) => {
     console.error(e);
     res.json({ ok: false });
   }
+});
+
+router.get('/get/all', async (req, res) => {
+  const products = await getAllProducts();
+  res.json({ ok: true, products: products });
 });
 
 module.exports = router;
