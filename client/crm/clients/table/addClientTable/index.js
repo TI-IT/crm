@@ -14,14 +14,14 @@ export default function TableaddClients({ server_host }) {
     notes: 'Примечания',
   });
   const [clients, setClients] = React.useState({
-    surname: 'Фамилия',
-    name: 'Имя',
-    patronymic: 'Отчество',
-    phone: 'Телефон',
-    organization: 'Организация',
-    city: 'Город',
-    address: 'Адрес',
-    notes: 'Примечания',
+    surname: '',
+    name: '',
+    patronymic: '',
+    phone: '',
+    organization: '',
+    city: '',
+    address: '',
+    notes: '',
   });
   const [message, setMessage] = React.useState('');
   const [disabled, setDisabled] = React.useState(false);
@@ -34,93 +34,36 @@ export default function TableaddClients({ server_host }) {
     });
   }
 
-  function addSupplyTable(name, value) {
-    setProduct({
-      ...product,
-      [name]: value,
-    });
-  }
-
-  async function addProduct() {
+  async function addClients() {
     setDisabled(true);
     setMessage('');
     if (
-      !product.contractor ||
-      !product.type ||
-      !product.category ||
-      !product.subCategory ||
-      !product.name ||
-      !product.article ||
-      !product.finishing ||
-      !product.unit ||
-      !product.costPrice ||
-      !product.urlImage
+      !clients.surname ||
+      !clients.name ||
+      !clients.patronymic ||
+      !clients.phone ||
+      !clients.organization ||
+      !clients.city ||
+      !clients.address ||
+      !clients.notes
     ) {
       setMessage('Заполните все поля');
       setDisabled(false);
       return;
     }
 
-    const res = await fetch(server_host + '/products/add', {
+    const res = await fetch(server_host + '/clients/add', {
       method: 'post',
       credentials: 'include',
-      body: JSON.stringify(product),
+      body: JSON.stringify(clients),
       headers: {
         'Content-Type': 'application/json',
       },
     });
     const data = await res.json();
-
     if (data.ok) {
-      setMessage('Продукт добавлен');
-      loadProducts();
-      // router.push('/dashboard');
-    } else {
-      setDisabled(false);
-      setMessage('Ошибка попробуйте другие данные');
-    }
-  }
-
-  function addSupplyTable(name, value) {
-    setProduct({
-      ...product,
-      [name]: value,
-    });
-  }
-
-  async function addProduct() {
-    setDisabled(true);
-    setMessage('');
-    if (
-      !product.contractor ||
-      !product.type ||
-      !product.category ||
-      !product.subCategory ||
-      !product.name ||
-      !product.article ||
-      !product.finishing ||
-      !product.unit ||
-      !product.costPrice ||
-      !product.urlImage
-    ) {
-      setMessage('Заполните все поля');
-      setDisabled(false);
-      return;
-    }
-
-    const res = await fetch(server_host + '/products/add', {
-      method: 'post',
-      credentials: 'include',
-      body: JSON.stringify(product),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    const data = await res.json();
-
-    if (data.ok) {
-      setMessage('Продукт добавлен');
-      loadProducts();
+      setMessage('Клиент добавлен');
+      // loadClients(); //************************************************************************************************************ */
       // router.push('/dashboard');
     } else {
       setDisabled(false);
@@ -222,6 +165,12 @@ export default function TableaddClients({ server_host }) {
             </tbody>
           </table>
         </div>
+      </div>
+      <br></br>
+      <div>
+        <button type={'button'} onClick={addClients} className={styles.button} disabled={disabled}>
+          Добавить
+        </button>
       </div>
     </>
   );

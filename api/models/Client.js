@@ -3,21 +3,28 @@ const Schema = mongoose.Schema;
 
 const schema = new mongoose.Schema(
   {
-    email: {
+    surname: {
+      type: String,
+    },
+    name: {
+      type: String,
+    },
+    phone: {
       type: String,
       unique: true,
       require: true,
     },
-    password: {
+    organization: {
       type: String,
     },
-    username: {
+    city: {
       type: String,
-      unique: true,
     },
-    role: {
+    address: {
       type: String,
-      default: 'user',
+    },
+    notes: {
+      type: String,
     },
   },
   { autoCreate: true },
