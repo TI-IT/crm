@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './getProducts.module.scss';
+import styles from './getSupplyTable.module.scss';
 import { useTable, usePagination } from 'react-table';
 import { COLUMNS } from './columns';
 

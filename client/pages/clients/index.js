@@ -4,6 +4,7 @@ import Head from 'next/head';
 import styles from './clients.module.scss';
 import { Menu } from '../../conponents/Menu';
 import { useRouter } from 'next/router';
+import ClientsPage from '../../crm/clients/page';
 
 export default function Clients({ server_host }) {
   const [clients, setClients] = React.useState([]);
@@ -35,35 +36,11 @@ export default function Clients({ server_host }) {
   return (
     <>
       <Head>
-        <link rel="shortcut icon" href="/static/favicon.ico" />
-        <title>Клиенты</title>
+        <title>Клиенты clients</title>
       </Head>
       <Menu />
-      <div className={styles.container}>
-        <h2>Клиенты</h2>
-        <h2>Нужно настроить fetch</h2>
-      </div>
-      <button type={'button'} onClick={getClients}>
-        Запрос
-      </button>
-      <table className={styles.table}>
-        <thead>
-          <tr>
-            <th>Емаил</th>
-            <th>Пароль</th>
-            <th>Роль</th>
-          </tr>
-        </thead>
-        <tbody>
-          {clients.map((client, id) => (
-            <tr key={id}>
-              <td>{client.email}</td>
-              <td>{client.password}</td>
-              <td>{client.role}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <h2>Клиенты</h2>
+      <ClientsPage server_host={server_host} />
     </>
   );
 }
