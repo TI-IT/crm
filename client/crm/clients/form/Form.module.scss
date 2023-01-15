@@ -1,72 +1,99 @@
 @import '../../../styles/modules/container.scss';
+@import '../../../styles/modules/button.scss';
+
+$widthForm: 98%;
+$heightForm: 310px;
+$widthForm12: 50%;
+$heightForm12: 100%;
+$widthGroup: 100%;
+$heightGroup: 20%;
+
+$Form12Color: rgb(165, 184, 199);
+$box-shadow: 3px 3px 6px rgba(17, 90, 114, 0.82);
 
 .form {
-  // position: absolute;
-  margin: 0 auto;
-  width: 700px;
-  height: 100%;
-  padding: 20px;
-  box-shadow: 2px 2px 5px rgba(14, 71, 165, 0.82);
-  button {
-    cursor: pointer;
-    padding: 10px 30px;
-    height: 50px;
-    color: #fff;
-    background: #15359e;
-    border: none;
-    border-radius: 4px;
-    text-transform: uppercase;
-    font-size: 15px;
-    box-shadow: 2px 2px 5px rgba(14, 71, 165, 0.82);
+  position: relative;
+  padding: 10px;
+  left: 10px;
+  width: $widthForm;
+  height: $heightForm;
+  box-shadow: $box-shadow;
+}
+
+.form1 {
+  background-color: $Form12Color;
+  position: absolute;
+  width: $widthForm12;
+  height: $heightForm12;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+.form2 {
+  background-color: $Form12Color;
+  position: absolute;
+  width: $widthForm12;
+  height: $heightForm12;
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
+.group {
+  width: $widthGroup;
+  height: $heightGroup;
+  position: relative;
+
+  .labelLeft {
+    height: 80%;
+    position: absolute;
+    top: 23%;
+    left: 3%;
   }
-  botton:hover {
-    opacity: 0.8;
-    font-weight: bold;
-    transform: scale(1.1);
+  label {
+    font-size: 20px;
+    color: #5a627b;
+  }
+
+  .inputRight {
+    width: 70%;
+    height: 60%;
+    position: absolute;
+    top: 20%;
+    right: 3%;
+  }
+
+  input {
+    width: 100%;
+    text-align: left;
+    height: 100%;
+    border-radius: 3px;
+    border: none;
+    box-shadow: $box-shadow;
+  }
+
+  input:focus {
+    height: 40px;
+    font-size: 20px;
+    border: 3px solid rgb(255, 217, 2);
+    transform: translate(5px);
+  }
+  .red {
+    background-color: rgb(245, 216, 216);
+  }
+  .textarea {
+    text-align: left;
+    height: 150%;
+    width: 100%;
+    border-radius: 3px;
+    border: none;
+    box-shadow: $box-shadow;
+  }
+  textarea:focus {
+    border: 2px solid gold;
+    transform: translate(5px);
   }
 }
 .center {
   text-align: center;
-}
-.group {
-  margin: 10px;
   padding: 5px;
-
-  .labelLeft {
-    position: relative;
-    top: 30px;
-  }
-
-  .inputRight {
-    position: relative;
-    left: 150px;
-  }
-
-  input {
-    text-align: center;
-    margin-top: 5px;
-    height: 35px;
-    width: 500px;
-    border-radius: 3px;
-    border: none;
-    box-shadow: 2px 2px 5px rgba(14, 71, 165, 0.82);
-  }
-  textarea {
-    margin-top: 10px;
-    height: 100px;
-    width: 500px;
-    border-radius: 3px;
-    border: none;
-    box-shadow: 2px 2px 5px rgba(14, 71, 165, 0.82);
-  }
-  input:focus {
-    height: 40px;
-    font-size: 20px;
-    border: 2px solid gold;
-    transform: translate(5px);
-  }
-  textarea:focus {
-    border: 2px solid gold;
-    transform: translate(15px);
-  }
 }
