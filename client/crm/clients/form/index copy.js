@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import styles from './TableaddClients.module.scss';
+import styles from './Form.module.scss';
 
 export default function TableaddClients({ server_host }) {
   const [titles, setTitles] = React.useState({

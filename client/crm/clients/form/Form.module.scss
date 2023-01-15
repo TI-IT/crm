@@ -1,0 +1,72 @@
+@import '../../../styles/modules/container.scss';
+
+.form {
+  // position: absolute;
+  margin: 0 auto;
+  width: 700px;
+  height: 100%;
+  padding: 20px;
+  box-shadow: 2px 2px 5px rgba(14, 71, 165, 0.82);
+  button {
+    cursor: pointer;
+    padding: 10px 30px;
+    height: 50px;
+    color: #fff;
+    background: #15359e;
+    border: none;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-size: 15px;
+    box-shadow: 2px 2px 5px rgba(14, 71, 165, 0.82);
+  }
+  botton:hover {
+    opacity: 0.8;
+    font-weight: bold;
+    transform: scale(1.1);
+  }
+}
+.center {
+  text-align: center;
+}
+.group {
+  margin: 10px;
+  padding: 5px;
+
+  .labelLeft {
+    position: relative;
+    top: 30px;
+  }
+
+  .inputRight {
+    position: relative;
+    left: 150px;
+  }
+
+  input {
+    text-align: center;
+    margin-top: 5px;
+    height: 35px;
+    width: 500px;
+    border-radius: 3px;
+    border: none;
+    box-shadow: 2px 2px 5px rgba(14, 71, 165, 0.82);
+  }
+  textarea {
+    margin-top: 10px;
+    height: 100px;
+    width: 500px;
+    border-radius: 3px;
+    border: none;
+    box-shadow: 2px 2px 5px rgba(14, 71, 165, 0.82);
+  }
+  input:focus {
+    height: 40px;
+    font-size: 20px;
+    border: 2px solid gold;
+    transform: translate(5px);
+  }
+  textarea:focus {
+    border: 2px solid gold;
+    transform: translate(15px);
+  }
+}
