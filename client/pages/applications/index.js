@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import styles from './Applications.module.scss';
 import { Menu } from '../../conponents/Menu';
-import ClientsPage from '../../crm/clients/page';
+import ApplicationsPage from '../../crm/applications/page';
 
 export default function Applications({ server_host }) {
   const [clients, setClients] = React.useState([]);
@@ -30,11 +30,11 @@ export default function Applications({ server_host }) {
   return (
     <>
       <Head>
-        <title>Клиенты clients</title>
+        <title>Заявки applications</title>
       </Head>
       <Menu />
       <h2>Заявки</h2>
-      <ClientsPage server_host={server_host} />
+      <ApplicationsPage server_host={server_host} />
     </>
   );
 }
