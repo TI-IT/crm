@@ -1,11 +1,12 @@
 @import './display';
 @import './spacing';
+@import './modules/color.scss';
 
 html,
 body {
   padding: 0;
   margin: 0;
-  background-color: #edeef4;
+  background-color: $colorBody;
 }
 
 * {
