@@ -3,6 +3,9 @@ import { useRouter } from 'next/router';
 import styles from './Form.module.scss';
 
 export default function TableaddClients({ server_host }) {
+  const [citys, setCitys] = React.useState([]);
+  const [addCity, setAddCity] = React.useState({});
+  const [hide, sethide] = React.useState(styles.hide);
   const [titles, setTitles] = React.useState({
     surname: 'Фамилия',
     name: 'Имя',
@@ -36,10 +39,34 @@ export default function TableaddClients({ server_host }) {
     });
   }
 
+  function changeCity(name, value) {
+    setAddCity({
+      ...addCity,
+      [name]: value,
+    });
+  }
+
+  React.useEffect(loadCitys, []);
+
+  function loadCitys() {
+    fetch(server_host + '/directory/citys/get/all', {
+      method: 'get',
+      credentials: 'include',
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        if (data.ok) {
+          setCitys(data.citys);
+        }
+      });
+  }
+
   async function addClients() {
     setDisabled(true);
     setMessage('');
-    if (!clients.name || !clients.phone || !clients.organization || !clients.city) {
+    if (!clients.name || !clients.phone || !clients.organization) {
       setMessage('Заполните нужные поля поля');
       setDisabled(false);
       return;
@@ -56,7 +83,6 @@ export default function TableaddClients({ server_host }) {
     const data = await res.json();
     if (data.ok) {
       setMessage('Клиент добавлен');
-      // loadClient(); //*************************** */
       setDisabled(false);
       setClients({
         surname: '',
@@ -69,10 +95,41 @@ export default function TableaddClients({ server_host }) {
         address: '',
         notes: '',
       });
-      router.push('/clients');
+      router.push('/applications');
     } else {
       setDisabled(false);
       setMessage('Ошибка попробуйте другие данные');
+    }
+  }
+
+  function displayShow() {
+    sethide(styles.show);
+  }
+  function displayHide() {
+    sethide(styles.hide);
+  }
+  async function directoryAddCity() {
+    sethide(styles.hide);
+    try {
+      const res = await fetch(server_host + '/directory/city/add', {
+        method: 'post',
+        credentials: 'include',
+        body: JSON.stringify(addCity),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      const data = await res.json();
+      if (data.ok) {
+        setMessage('Город добавлен');
+        loadCitys();
+        setDisabled(false);
+      } else {
+        setDisabled(false);
+        setMessage('Ошибка попробуйте другие данные');
+      }
+    } catch (error) {
+      alert('Сервер не отвечает');
     }
   }
 
@@ -93,6 +150,7 @@ export default function TableaddClients({ server_host }) {
                 placeholder={'Фамилия'}
                 onChange={(e) => changeClients('surname', e.target.value)}
                 value={clients.surname}
+                onClick={displayHide}
               ></input>
             </div>
           </div>
@@ -108,6 +166,7 @@ export default function TableaddClients({ server_host }) {
                 placeholder={'Имя'}
                 onChange={(e) => changeClients('name', e.target.value)}
                 value={clients.name}
+                onClick={displayHide}
               ></input>
             </div>
           </div>
@@ -122,6 +181,7 @@ export default function TableaddClients({ server_host }) {
                 placeholder={'Отчество'}
                 onChange={(e) => changeClients('patronymic', e.target.value)}
                 value={clients.patronymic}
+                onClick={displayHide}
               ></input>
             </div>
           </div>
@@ -137,6 +197,7 @@ export default function TableaddClients({ server_host }) {
                 placeholder={'Телефон'}
                 onChange={(e) => changeClients('phone', e.target.value)}
                 value={clients.phone}
+                onClick={displayHide}
               ></input>
             </div>
           </div>
@@ -151,6 +212,7 @@ export default function TableaddClients({ server_host }) {
                 placeholder={'Email'}
                 onChange={(e) => changeClients('email', e.target.value)}
                 value={clients.email}
+                onClick={displayHide}
               ></input>
             </div>
           </div>
@@ -169,6 +231,7 @@ export default function TableaddClients({ server_host }) {
                 placeholder={'Организация'}
                 onChange={(e) => changeClients('organization', e.target.value)}
                 value={clients.organization}
+                onClick={displayHide}
               ></input>
             </div>
           </div>
@@ -177,14 +240,36 @@ export default function TableaddClients({ server_host }) {
               <label>{titles.city}</label>
             </div>
             <div className={styles.inputRight}>
-              <input
-                className={styles.red}
-                type={'text'}
-                name={'city'}
-                placeholder={'Город'}
+              <select
+                className={styles.select}
                 onChange={(e) => changeClients('city', e.target.value)}
-                value={clients.city}
-              ></input>
+              >
+                <option>{''}</option>
+                {citys.map((city, id) => (
+                  <option key={id}>{city}</option>
+                ))}
+              </select>
+              <div className={styles.buttonGroup}>
+                <button className={styles.button} type={'button'} onClick={displayShow}>
+                  +
+                </button>
+                <div className={hide}>
+                  <div className={styles.GroupChildren}>
+                    <input
+                      type={'text'}
+                      name={'city'}
+                      placeholder={'Город'}
+                      onChange={(e) => changeCity('city', e.target.value)}
+                      value={addCity.city}
+                    ></input>
+                    <div className={styles.GroupChildrenButton}>
+                      <button className={styles.button} type={'button'} onClick={directoryAddCity}>
+                        добавить
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div className={styles.group}>
@@ -199,6 +284,7 @@ export default function TableaddClients({ server_host }) {
                 placeholder={'Адрес'}
                 onChange={(e) => changeClients('address', e.target.value)}
                 value={clients.address}
+                onClick={displayHide}
               ></textarea>
             </div>
           </div>
@@ -214,6 +300,7 @@ export default function TableaddClients({ server_host }) {
                 placeholder={'Примечания'}
                 onChange={(e) => changeClients('notes', e.target.value)}
                 value={clients.notes}
+                onClick={displayHide}
               ></textarea>
             </div>
           </div>

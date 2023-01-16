@@ -10,18 +10,22 @@ export default function Tasks({ server_host }) {
   React.useEffect(loadTasks, []);
 
   function loadTasks() {
-    fetch(server_host + '/tasks/getalltasks', {
-      method: 'get',
-      credentials: 'include',
-    })
-      .then((res) => {
-        return res.json();
+    try {
+      fetch(server_host + '/tasks/getalltasks', {
+        method: 'get',
+        credentials: 'include',
       })
-      .then((data) => {
-        if (data) {
-          setTasks(data.tasks);
-        }
-      });
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          if (data) {
+            setTasks(data.tasks);
+          }
+        });
+    } catch (error) {
+      console.log('Нет ответа от сервера');
+    }
   }
 
   return (

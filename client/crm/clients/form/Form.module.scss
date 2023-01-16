@@ -43,6 +43,36 @@ $box-shadow: 3px 3px 6px rgba(17, 90, 114, 0.82);
   height: $heightGroup;
   position: relative;
 
+  .buttonGroup {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    .hide {
+      display: none;
+    }
+    .show {
+      width: 110%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      right: 20px;
+    }
+    .GroupChildren {
+      width: 400%;
+      height: 100%;
+      position: absolute;
+      left: -500%;
+      background-color: rgb(24, 25, 10);
+    }
+    .GroupChildrenButton {
+      position: absolute;
+      right: -55%;
+      top: 0;
+    }
+  }
+
   .labelLeft {
     height: 80%;
     position: absolute;
@@ -77,9 +107,7 @@ $box-shadow: 3px 3px 6px rgba(17, 90, 114, 0.82);
     border: 3px solid rgb(255, 217, 2);
     transform: translate(5px);
   }
-  .red {
-    background-color: rgb(245, 216, 216);
-  }
+
   .textarea {
     text-align: left;
     height: 150%;
@@ -96,4 +124,12 @@ $box-shadow: 3px 3px 6px rgba(17, 90, 114, 0.82);
 .center {
   text-align: center;
   padding: 5px;
+}
+.red {
+  background-color: rgb(245, 216, 216);
+}
+.select {
+  width: 80%;
+  height: 100%;
+  background-color: rgb(245, 216, 216);
 }
