@@ -1,0 +1,15 @@
+.bigCard {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  border: 2px solid rgb(24, 80, 80);
+  background-color: rgb(255, 255, 255);
+  .bigCardText {
+    border: 2px solid rgb(192, 155, 200);
+    background-color: rgb(255, 140, 0);
+  }
+  .bigCardButton {
+    border: 2px solid rgb(192, 155, 200);
+    background-color: rgb(158, 4, 160);
+  }
+}
