@@ -16,7 +16,10 @@ export default function Home({ server_host }) {
           <Menu />
         </div>
         <div className={styles.gridContent}>
-          <h2>Домашняя страница</h2>
+          <h2>Клиенты</h2>
+        </div>
+        <div className="gridFooter">
+          <h1>Footer</h1>
         </div>
       </div>
     </>

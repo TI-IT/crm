@@ -5,12 +5,13 @@
     'sidebar content'
     'footer content';
   grid-gap: 10px;
-  grid-template-columns: 130px 1fr;
-  grid-template-rows: 40px 300px 1fr;
+  grid-template-columns: 115px 1fr;
+  grid-template-rows: 30px 300px 1fr;
 }
 
 .gridHeader {
   grid-area: header;
+  
 }
 .gridSidebar {
   grid-area: sidebar;
