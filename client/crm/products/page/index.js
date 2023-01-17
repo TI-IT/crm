@@ -1,6 +1,5 @@
 import React from 'react';
 import Link from 'next/link';
-import styles from './ProductsPage.module.scss';
 import { TableAddProducts } from '../table/addProducts';
 import { TableGetProducts } from '../table/getProducts';
 
@@ -24,8 +23,6 @@ export default function ProductsPage({ server_host }) {
   }
   return (
     <>
-      <h1>ProductsPage</h1>
-      <div className={styles.container}></div>
       <TableAddProducts server_host={server_host} loadProducts={loadProducts} />
       <TableGetProducts server_host={server_host} products={products} />
     </>

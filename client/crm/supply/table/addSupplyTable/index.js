@@ -69,9 +69,6 @@ export const TableaddSupply = ({ server_host, loadProducts }) => {
 
   return (
     <>
-      <div>
-        <h2>Добавить товар</h2>
-      </div>
       <div>{message}</div>
       <div className={styles.containerTable}>
         <div className={styles.tableResponsive}>

@@ -10,13 +10,11 @@ export default function Home({ server_host }) {
       </Head>
       <div className={styles.gridContainer}>
         <div className={styles.gridHeader}>
-          <h2>Header</h2>
-        </div>
-        <div className={styles.gridSidebar}>
           <Menu />
         </div>
+        <div className={styles.gridSidebar}></div>
         <div className={styles.gridContent}>
-          <h2>Клиенты</h2>
+          <h2>Главная страница</h2>
         </div>
         <div className="gridFooter">
           <h1>Footer</h1>

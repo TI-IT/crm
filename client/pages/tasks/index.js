@@ -35,11 +35,9 @@ export default function Tasks({ server_host }) {
       </Head>
       <div className={styles.gridContainer}>
         <div className={styles.gridHeader}>
-          <h2>Header</h2>
-        </div>
-        <div className={styles.gridSidebar}>
           <Menu />
         </div>
+        <div className={styles.gridSidebar}></div>
         <div className={styles.gridContent}>
           <div>
             <a href="https://www.youtube.com/watch?v=nEabP9CYCAQ&t=726s">
@@ -79,10 +77,6 @@ export default function Tasks({ server_host }) {
               </tbody>
             </table>
           </div>
-        </div>
-        <div className={styles.gridFooter}>
-          <h2>Footer</h2>
-          <h2>Footer</h2>
         </div>
       </div>
     </>
