@@ -1,6 +1,8 @@
 .bigCard {
   display: grid;
-  width: 100%;
+  grid-template-columns: 1fr 1fr;
+  // columns: auto;
+  width: 700px;
   height: 100%;
   border: 2px solid rgb(24, 80, 80);
   background-color: rgb(255, 255, 255);

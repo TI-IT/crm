@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function FormGroupSelect(styles, titles, clients, displayShow, hide) {
+export default function FormGroupSelect() {
   return (
     <div className={styles.group}>
       <div className={styles.labelLeft}>

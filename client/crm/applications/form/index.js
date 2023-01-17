@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import styles from './Form.module.scss';
-import FormGroupSelect from '../components/formGroupSelect';
+import Card from '../components/card';
 
 export default function ApplicationsForm({ server_host }) {
   const [citys, setCitys] = React.useState([]);
@@ -149,58 +149,7 @@ export default function ApplicationsForm({ server_host }) {
 
   return (
     <>
-      <div className={styles.gridInput}>
-        <div className={styles.gridInputText}>
-          <input placeholder={'Input'} />
-        </div>
-        <div className={styles.gridInputButton}>
-          <button>Button</button>
-        </div>
-      </div>
-      <div className={styles.card}>
-        <div className={styles.bigCard}>
-          <div className={styles.gridInputButton}>
-            <span>
-              <input placeholder={'Input'} />
-            </span>
-            <div>
-              <button>Button</button>
-            </div>
-          </div>
-          <div className={styles.gridInput}>
-            <span>
-              <input placeholder={'Input'} />
-            </span>
-          </div>
-          <div className={styles.miniCard}>
-            <div className={styles.gridInput}>
-              <span>
-                <input placeholder={'Input'} />
-              </span>
-            </div>
-            <div className={styles.gridInput}>
-              <span>
-                <input placeholder={'Input'} />
-              </span>
-            </div>
-            <div className={styles.gridInput}>
-              <span>
-                <input placeholder={'Input'} />
-              </span>
-            </div>
-            <div className={styles.gridInput}>
-              <span>
-                <input placeholder={'Input'} />
-              </span>
-            </div>
-            <div className={styles.gridInput}>
-              <span>
-                <input placeholder={'Input'} />
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Card />
     </>
   );
 }
