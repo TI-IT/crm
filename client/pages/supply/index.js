@@ -32,8 +32,17 @@ export default function Supply({ server_host }) {
       <Head>
         <title>Снабжение Supply</title>
       </Head>
-      <Menu />
-      <SupplyPage />
+      <div className={styles.gridContainer}>
+        <div className={styles.gridHeader}>
+          <h2>Header</h2>
+        </div>
+        <div className={styles.gridSidebar}>
+          <Menu />
+        </div>
+        <div className={styles.gridContent}>
+          <SupplyPage />
+        </div>
+      </div>
     </>
   );
 }

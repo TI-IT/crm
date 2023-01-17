@@ -11,8 +11,17 @@ export default function Products({ server_host }) {
       <Head>
         <title>Товары ProductsPage</title>
       </Head>
-      <Menu />
-      <ProductsPage server_host={server_host} />
+      <div className={styles.gridContainer}>
+        <div className={styles.gridHeader}>
+          <h2>Header</h2>
+        </div>
+        <div className={styles.gridSidebar}>
+          <Menu />
+        </div>
+        <div className={styles.gridContent}>
+          <ProductsPage server_host={server_host} />
+        </div>
+      </div>
     </>
   );
 }

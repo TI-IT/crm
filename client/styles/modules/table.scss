@@ -1,18 +1,19 @@
 .table {
+  width: 100%;
   text-align: left;
   padding: 1px 2px;
   border-radius: 4px;
   margin-bottom: 5px;
-  background-color: #4675c7;
+  background-color: #aeb9cc;
 
   thead {
     font-weight: bold;
-    font-size: 22px;
+    font-size: 16px;
     color: #dae1e5;
     background-color: #232060;
   }
   tbody {
-    font-size: 20px;
+    font-size: 12px;
     color: rgb(0, 0, 0);
     background-color: #ffffff;
   }

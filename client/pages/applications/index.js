@@ -32,9 +32,18 @@ export default function Applications({ server_host }) {
       <Head>
         <title>Заявки applications</title>
       </Head>
-      <Menu />
-      <h2>Заявки</h2>
-      <ApplicationsPage server_host={server_host} />
+      <div className={styles.gridContainer}>
+        <div className={styles.gridHeader}>
+          <h2>Header</h2>
+        </div>
+        <div className={styles.gridSidebar}>
+          <Menu />
+        </div>
+        <div className={styles.gridContent}>
+          <h2>Заявки</h2>
+          <ApplicationsPage server_host={server_host} />
+        </div>
+      </div>
     </>
   );
 }

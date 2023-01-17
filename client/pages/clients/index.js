@@ -23,8 +23,6 @@ export default function Clients({ server_host }) {
           console.log(data.clients);
         }
       });
-
-    console.log(clients);
   }
 
   return (
@@ -32,9 +30,18 @@ export default function Clients({ server_host }) {
       <Head>
         <title>Клиенты clients</title>
       </Head>
-      <Menu />
-      <h2>Клиенты</h2>
-      <ClientsPage server_host={server_host} />
+      <div className={styles.gridContainer}>
+        <div className={styles.gridHeader}>
+          <h2>Header</h2>
+        </div>
+        <div className={styles.gridSidebar}>
+          <Menu />
+        </div>
+        <div className={styles.gridContent}>
+          <h2>Клиенты</h2>
+          <ClientsPage server_host={server_host} />
+        </div>
+      </div>
     </>
   );
 }

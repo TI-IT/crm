@@ -35,21 +35,43 @@ export const Menu = () => {
   }
   return (
     <div className={styles.menu}>
-      <Link href={'/'}>Главная</Link>
-      <Link href={'/clients'}>Клиенты</Link>
-      <Link href={'/applications'}>Заявки</Link>
-      <Link href={'/products'}>Товары</Link>
-      <Link href={'/supply'}>Снабжение</Link>
-      <Link href={'/tasks'}>Карточки</Link>
-      <Link href={'/dashboard'}>Личный кабинет</Link>
-      {!authorised && <Link href={'/login'}>Вход</Link>}
-      <Link href={'/signup'}>Регистрация</Link>
-      {role === 'admin' && <Link href={'/admin'}>Admin</Link>}
-      {authorised && <a href={server_host + '/users/logout'}>Выход</a>}
-      <Link href={'https://js-course.ru/courses/show/62b1824805964a1386560a8e'}>
-        Lesson 3.11.17
-      </Link>
-      <Link href={'/directory'}>Справочник</Link>
+      <div>
+        <Link href={'/'}>Главная</Link>
+      </div>
+      <div>
+        <Link href={'/clients'}>Клиенты</Link>
+      </div>
+      <div>
+        <Link href={'/applications'}>Заявки</Link>
+      </div>
+      <div>
+        <Link href={'/products'}>Товары</Link>
+      </div>
+      <div>
+        <Link href={'/supply'}>Снабжение</Link>
+      </div>
+      <div>
+        {' '}
+        <Link href={'/tasks'}>Карточки</Link>
+      </div>
+      <div>
+        <Link href={'/dashboard'}>Личный кабинет</Link>
+      </div>
+      <div>{!authorised && <Link href={'/login'}>Вход</Link>}</div>
+      <div>
+        <Link href={'/signup'}>Регистрация</Link>
+      </div>
+      <div> {role === 'admin' && <Link href={'/admin'}>Admin</Link>}</div>
+      <div>{authorised && <a href={server_host + '/users/logout'}>Выход</a>}</div>
+      <div>
+        {' '}
+        <Link href={'https://js-course.ru/courses/show/62b1824805964a1386560a8e'}>
+          Lesson 3.11.17
+        </Link>
+      </div>
+      <div>
+        <Link href={'/directory'}>Справочник</Link>
+      </div>
     </div>
   );
 };
