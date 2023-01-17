@@ -1,6 +1,10 @@
 @import '../../../styles/modules/container.scss';
 @import '../../../styles/modules/button.scss';
 @import '../../../styles/modules/color.scss';
+@import '../../../styles/modules/grid/input.scss';
+@import '../../../styles/modules/grid/miniCard2col.scss';
+@import '../../../styles/modules/grid/bigCard.scss';
+@import '../../../styles/modules/grid/card.scss';
 
 $widthForm: 98%;
 $heightForm: 310px;
@@ -70,25 +74,6 @@ $heightGroup: 20%;
     }
   }
 
-  .labelLeft {
-    height: 80%;
-    position: absolute;
-    top: 23%;
-    left: 3%;
-  }
-  label {
-    font-size: 20px;
-    color: #5a627b;
-  }
-
-  .inputRight {
-    width: 70%;
-    height: 60%;
-    position: absolute;
-    top: 20%;
-    right: 3%;
-  }
-
   input {
     width: 100%;
     text-align: left;
@@ -96,20 +81,6 @@ $heightGroup: 20%;
     border-radius: 3px;
     border: none;
     box-shadow: $colorshadow;
-  }
-
-  input:hover {
-    transition: all 0.4s;
-    height: 35px;
-    font-size: 20px;
-    border: 1px solid $colorButtonTextHover;
-  }
-  input:focus {
-    transition: all 0.4s;
-    height: 40px;
-    font-size: 20px;
-    border: 3px solid $colorButtonTextHover;
-    transform: translate(5px);
   }
 
   .textarea {

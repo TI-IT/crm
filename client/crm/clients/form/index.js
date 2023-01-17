@@ -137,185 +137,208 @@ export default function TableaddClients({ server_host }) {
     <>
       <h3 className={styles.center}>Добавить Клиента</h3>
       <div className={styles.center}>{message}</div>
-      <div className={styles.form}>
-        <div className={styles.form1}>
-          <div className={styles.group}>
-            <div className={styles.labelLeft}>
+      <div className={styles.card}>
+        <div className={styles.bigCard}>
+          <div className={styles.miniCard2col}>
+            <span>
               <label>{titles.surname}</label>
-            </div>
-            <div className={styles.inputRight}>
-              <input
-                type={'text'}
-                name={'surname'}
-                placeholder={'Фамилия'}
-                onChange={(e) => changeClients('surname', e.target.value)}
-                value={clients.surname}
-                onClick={displayHide}
-              ></input>
+            </span>
+            <div className={styles.gridInput}>
+              <span>
+                <input
+                  type={'text'}
+                  name={'surname'}
+                  placeholder={'Фамилия'}
+                  onChange={(e) => changeClients('surname', e.target.value)}
+                  value={clients.surname}
+                  onClick={displayHide}
+                ></input>
+              </span>
             </div>
           </div>
-          <div className={styles.group}>
-            <div className={styles.labelLeft}>
+          <div className={styles.miniCard2col}>
+            <span>
               <label>{titles.name}</label>
-            </div>
-            <div className={styles.inputRight}>
-              <input
-                className={styles.red}
-                type={'text'}
-                name={'name'}
-                placeholder={'Имя'}
-                onChange={(e) => changeClients('name', e.target.value)}
-                value={clients.name}
-                onClick={displayHide}
-              ></input>
+            </span>
+            <div className={styles.gridInput}>
+              <span>
+                <input
+                  className={styles.red}
+                  type={'text'}
+                  name={'name'}
+                  placeholder={'Имя'}
+                  onChange={(e) => changeClients('name', e.target.value)}
+                  value={clients.name}
+                  onClick={displayHide}
+                ></input>
+              </span>
             </div>
           </div>
-          <div className={styles.group}>
-            <div className={styles.labelLeft}>
+          <div className={styles.miniCard2col}>
+            <span>
               <label>{titles.patronymic}</label>
-            </div>
-            <div className={styles.inputRight}>
-              <input
-                type={'text'}
-                name={'patronymic'}
-                placeholder={'Отчество'}
-                onChange={(e) => changeClients('patronymic', e.target.value)}
-                value={clients.patronymic}
-                onClick={displayHide}
-              ></input>
+            </span>
+            <div className={styles.gridInput}>
+              <span>
+                <input
+                  type={'text'}
+                  name={'patronymic'}
+                  placeholder={'Отчество'}
+                  onChange={(e) => changeClients('patronymic', e.target.value)}
+                  value={clients.patronymic}
+                  onClick={displayHide}
+                ></input>
+              </span>
             </div>
           </div>
-          <div className={styles.group}>
-            <div className={styles.labelLeft}>
+          <div className={styles.miniCard2col}>
+            <span>
               <label>{titles.phone}</label>
-            </div>
-            <div className={styles.inputRight}>
-              <input
-                className={styles.red}
-                type={'number'}
-                name={'phone'}
-                placeholder={'Телефон'}
-                onChange={(e) => changeClients('phone', e.target.value)}
-                value={clients.phone}
-                onClick={displayHide}
-              ></input>
+            </span>
+            <div className={styles.gridInput}>
+              <span>
+                <input
+                  className={styles.red}
+                  type={'number'}
+                  name={'phone'}
+                  placeholder={'Телефон'}
+                  onChange={(e) => changeClients('phone', e.target.value)}
+                  value={clients.phone}
+                  onClick={displayHide}
+                ></input>
+              </span>
             </div>
           </div>
-          <div className={styles.group}>
-            <div className={styles.labelLeft}>
+          <div className={styles.miniCard2col}>
+            <span>
               <label>{titles.email}</label>
-            </div>
-            <div className={styles.inputRight}>
-              <input
-                type={'text'}
-                name={'email'}
-                placeholder={'Email'}
-                onChange={(e) => changeClients('email', e.target.value)}
-                value={clients.email}
-                onClick={displayHide}
-              ></input>
+            </span>
+            <div className={styles.gridInput}>
+              <span>
+                <input
+                  type={'text'}
+                  name={'email'}
+                  placeholder={'Email'}
+                  onChange={(e) => changeClients('email', e.target.value)}
+                  value={clients.email}
+                  onClick={displayHide}
+                ></input>
+              </span>
             </div>
           </div>
         </div>
 
-        <div className={styles.form2}>
-          <div className={styles.group}>
-            <div className={styles.labelLeft}>
+        <div className={styles.bigCard}>
+          <div className={styles.miniCard2col}>
+            <span>
               <label>{titles.organization}</label>
-            </div>
-            <div className={styles.inputRight}>
-              <input
-                className={styles.red}
-                type={'text'}
-                name={'organization'}
-                placeholder={'Организация'}
-                onChange={(e) => changeClients('organization', e.target.value)}
-                value={clients.organization}
-                onClick={displayHide}
-              ></input>
+            </span>
+            <div className={styles.gridInput}>
+              <span>
+                <input
+                  className={styles.red}
+                  type={'text'}
+                  name={'organization'}
+                  placeholder={'Организация'}
+                  onChange={(e) => changeClients('organization', e.target.value)}
+                  value={clients.organization}
+                  onClick={displayHide}
+                ></input>
+              </span>
             </div>
           </div>
-          <div className={styles.group}>
-            <div className={styles.labelLeft}>
+          <div className={styles.miniCard2col}>
+            <span>
               <label>{titles.city}</label>
-            </div>
-            <div className={styles.inputRight}>
-              <select
-                className={styles.select}
-                onChange={(e) => changeClients('city', e.target.value)}
-              >
-                <option>{''}</option>
-                {citys.map((city, id) => (
-                  <option key={id}>{city}</option>
-                ))}
-              </select>
-              <div className={styles.buttonGroup}>
-                <button className={styles.button} type={'button'} onClick={displayShow}>
-                  +
-                </button>
-                <div className={hide}>
-                  <div className={styles.GroupChildren}>
-                    <input
-                      type={'text'}
-                      name={'city'}
-                      placeholder={'Город'}
-                      onChange={(e) => changeCity('city', e.target.value)}
-                      value={addCity.city}
-                    ></input>
-                    <div className={styles.GroupChildrenButton}>
-                      <button className={styles.button} type={'button'} onClick={directoryAddCity}>
-                        добавить
-                      </button>
+            </span>
+            <div className={styles.gridInput}>
+              <span>
+                <select
+                  className={styles.select}
+                  onChange={(e) => changeClients('city', e.target.value)}
+                >
+                  <option>{''}</option>
+                  {citys.map((city, id) => (
+                    <option key={id}>{city}</option>
+                  ))}
+                </select>
+
+                <div className={styles.buttonGroup}>
+                  <button className={styles.button} type={'button'} onClick={displayShow}>
+                    +
+                  </button>
+                  <div className={hide}>
+                    <div className={styles.GroupChildren}>
+                      <input
+                        type={'text'}
+                        name={'city'}
+                        placeholder={'Город'}
+                        onChange={(e) => changeCity('city', e.target.value)}
+                        value={addCity.city}
+                      ></input>
+                      <div className={styles.GroupChildrenButton}>
+                        <button
+                          className={styles.button}
+                          type={'button'}
+                          onClick={directoryAddCity}
+                        >
+                          добавить
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </span>
             </div>
           </div>
-          <div className={styles.group}>
-            <div className={styles.labelLeft}>
+          <div className={styles.miniCard2col}>
+            <span>
               <label>{titles.address}</label>
-            </div>
-            <div className={styles.inputRight}>
-              <textarea
-                className={styles.textarea}
-                type={'text'}
-                name={'address'}
-                placeholder={'Адрес'}
-                onChange={(e) => changeClients('address', e.target.value)}
-                value={clients.address}
-                onClick={displayHide}
-              ></textarea>
+            </span>
+            <div className={styles.gridInput}>
+              <span>
+                <textarea
+                  className={styles.textarea}
+                  type={'text'}
+                  name={'address'}
+                  placeholder={'Адрес'}
+                  onChange={(e) => changeClients('address', e.target.value)}
+                  value={clients.address}
+                  onClick={displayHide}
+                ></textarea>
+              </span>
             </div>
           </div>
-          <div className={styles.group}>
-            <div className={styles.labelLeft}>
+          <div className={styles.miniCard2col}>
+            <span>
               <label>{titles.notes}</label>
-            </div>
-            <div className={styles.inputRight}>
-              <textarea
-                className={styles.textarea}
-                type={'text'}
-                name={'notes'}
-                placeholder={'Примечания'}
-                onChange={(e) => changeClients('notes', e.target.value)}
-                value={clients.notes}
-                onClick={displayHide}
-              ></textarea>
+            </span>
+            <div className={styles.gridInput}>
+              <span>
+                <textarea
+                  className={styles.textarea}
+                  type={'text'}
+                  name={'notes'}
+                  placeholder={'Примечания'}
+                  onChange={(e) => changeClients('notes', e.target.value)}
+                  value={clients.notes}
+                  onClick={displayHide}
+                ></textarea>
+              </span>
             </div>
           </div>
         </div>
-      </div>
-      <div className={styles.center}>
-        <div>
-          <button
-            className={styles.button}
-            type={'button'}
-            onClick={addClients}
-            disabled={disabled}
-          >
-            Добавить
-          </button>
+        <div className={styles.center}>
+          <span>
+            <button
+              className={styles.button}
+              type={'button'}
+              onClick={addClients}
+              disabled={disabled}
+            >
+              Добавить
+            </button>
+          </span>
         </div>
       </div>
     </>
