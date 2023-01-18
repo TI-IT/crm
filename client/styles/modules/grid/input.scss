@@ -3,15 +3,15 @@
 .gridInput {
   width: 100%;
   height: 100%;
-  padding: 1px;
+  padding: 3px;
   border: none;
   // background-color: rgb(97, 82, 82);
   span {
-    width: 100%;
-    height: 100%;
+    // width: 100%;
+    // height: 100%;
     border: none;
     input {
-      width: 100%;
+      width: 97%;
       height: 100%;
       border: none;
       box-shadow: $colorshadow;
@@ -23,5 +23,16 @@
       transition: all 0.4s;
       border: 2px solid $colorButtonTextHover;
     }
+  }
+  textarea {
+    width: 97%;
+    height: 100%;
+  }
+  textarea:hover {
+    border: 2px solid $colorButtonTextHover;
+  }
+  textarea:focus {
+    transition: all 0.4s;
+    border: 2px solid $colorButtonTextHover;
   }
 }

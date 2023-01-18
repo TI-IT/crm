@@ -56,7 +56,11 @@ export const Menu = () => {
       <button>
         <Link href={'/dashboard'}>Личный кабинет</Link>
       </button>
-      <button>{!authorised && <Link href={'/login'}>Вход</Link>}</button>
+      {!authorised && (
+        <button>
+          <Link href={'/login'}>Вход</Link>
+        </button>
+      )}
       <button>
         <Link href={'/signup'}>Регистрация</Link>
       </button>

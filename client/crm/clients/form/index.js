@@ -247,48 +247,20 @@ export default function TableaddClients({ server_host }) {
               </span>
             </div>
           </div>
-          <div className={styles.miniCard2col}>
+          <div className={styles.miniCard3col}>
             <span>
               <label>{titles.city}</label>
             </span>
-            <div className={styles.gridInput}>
-              <span>
-                <select
-                  className={styles.select}
-                  onChange={(e) => changeClients('city', e.target.value)}
-                >
-                  <option>{''}</option>
-                  {citys.map((city, id) => (
-                    <option key={id}>{city}</option>
-                  ))}
-                </select>
-
-                <div className={styles.buttonGroup}>
-                  <button className={styles.button} type={'button'} onClick={displayShow}>
-                    +
-                  </button>
-                  <div className={hide}>
-                    <div className={styles.GroupChildren}>
-                      <input
-                        type={'text'}
-                        name={'city'}
-                        placeholder={'Город'}
-                        onChange={(e) => changeCity('city', e.target.value)}
-                        value={addCity.city}
-                      ></input>
-                      <div className={styles.GroupChildrenButton}>
-                        <button
-                          className={styles.button}
-                          type={'button'}
-                          onClick={directoryAddCity}
-                        >
-                          добавить
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </span>
+            <div className={styles.gridSelect}>
+              <select onChange={(e) => changeClients('city', e.target.value)}>
+                <option>{''}</option>
+                {citys.map((city, id) => (
+                  <option key={id}>{city}</option>
+                ))}
+              </select>
+              <button className={styles.gridButton} type={'button'} onClick={displayShow}>
+                +
+              </button>
             </div>
           </div>
           <div className={styles.miniCard2col}>
@@ -298,7 +270,6 @@ export default function TableaddClients({ server_host }) {
             <div className={styles.gridInput}>
               <span>
                 <textarea
-                  className={styles.textarea}
                   type={'text'}
                   name={'address'}
                   placeholder={'Адрес'}
@@ -316,7 +287,6 @@ export default function TableaddClients({ server_host }) {
             <div className={styles.gridInput}>
               <span>
                 <textarea
-                  className={styles.textarea}
                   type={'text'}
                   name={'notes'}
                   placeholder={'Примечания'}
@@ -339,6 +309,22 @@ export default function TableaddClients({ server_host }) {
               Добавить
             </button>
           </span>
+        </div>
+      </div>
+      <div className={hide}>
+        <div className={styles.gridWindow}>
+          <input
+            type={'text'}
+            name={'city'}
+            placeholder={'Город'}
+            onChange={(e) => changeCity('city', e.target.value)}
+            value={addCity.city}
+          ></input>
+          <div className={styles.GroupChildrenButton}>
+            <button className={styles.button} type={'button'} onClick={directoryAddCity}>
+              добавить
+            </button>
+          </div>
         </div>
       </div>
     </>
