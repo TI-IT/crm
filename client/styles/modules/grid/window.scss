@@ -1,0 +1,13 @@
+.gridWindow {
+  position: absolute;
+  top: 33%;
+  left: 33%;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-self: center;
+  // margin: 10px;
+  width: 50%;
+  height: 50%;
+  border: none;
+  background-color: rgb(231, 248, 0);
+}

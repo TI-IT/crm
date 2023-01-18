@@ -1,0 +1,48 @@
+@import '../../../styles/modules/container.scss';
+@import '../../../styles/modules/button.scss';
+@import '../../../styles/modules/color.scss';
+@import '../../../styles/modules/grid/input.scss';
+@import '../../../styles/modules/grid/select.scss';
+@import '../../../styles/modules/grid/miniCard2col.scss';
+@import '../../../styles/modules/grid/miniCard3col.scss';
+@import '../../../styles/modules/grid/bigCard.scss';
+@import '../../../styles/modules/grid/card.scss';
+@import '../../../styles/modules/grid/window.scss';
+
+.hide {
+  display: none;
+}
+.show {
+  width: 110%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 20px;
+}
+
+.textarea {
+  text-align: left;
+  height: 150%;
+  width: 100%;
+  border-radius: 3px;
+  border: none;
+  box-shadow: $colorshadow;
+}
+.textarea:hover {
+  transition: all 0.4s;
+  border: 1px solid $colorButtonTextHover;
+  textarea:focus {
+    transition: all 0.4s;
+    height: 160%;
+    font-size: 16px;
+    border: 2px solid $colorButtonTextHover;
+    transform: translate(5px);
+  }
+}
+.center {
+  text-align: center;
+  padding: 5px;
+}
+.red {
+  background-color: $required;
+}

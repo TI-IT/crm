@@ -1,12 +1,13 @@
 @import './display';
 @import './spacing';
+@import './modules/color.scss';
+@import './modules/grid/template.scss';
 
 html,
 body {
   padding: 0;
   margin: 0;
-
-  background-color: #f3efe4;
+  background-color: $colorBody;
 }
 
 * {

@@ -35,16 +35,53 @@ export const Menu = () => {
   }
   return (
     <div className={styles.menu}>
-      <Link href={'/'}>Главная</Link>
-      <Link href={'/yougile'}>YouGile</Link>
-      <Link href={'/dashboard'}>Личный кабинет</Link>
-      {!authorised && <Link href={'/login'}>Вход</Link>}
-      <Link href={'/signup'}>Регистрация</Link>
-      {role === 'admin' && <Link href={'/admin'}>Admin</Link>}
-      {authorised && <a href={server_host + '/users/logout'}>Выход</a>}
-      <Link href={'https://js-course.ru/courses/show/62b1824805964a1386560a8e'}>
-        Lesson 3.11.17
-      </Link>
+      <button>
+        <Link href={'/'}>Главная</Link>
+      </button>
+      <button>
+        <Link href={'/clients'}>Клиенты</Link>
+      </button>
+      <button>
+        <Link href={'/applications'}>Заявки</Link>
+      </button>
+      <button>
+        <Link href={'/products'}>Товары</Link>
+      </button>
+      <button>
+        <Link href={'/supply'}>Снабжение</Link>
+      </button>
+      <button>
+        <Link href={'/tasks'}>Карточки</Link>
+      </button>
+      <button>
+        <Link href={'/dashboard'}>Личный кабинет</Link>
+      </button>
+      {!authorised && (
+        <button>
+          <Link href={'/login'}>Вход</Link>
+        </button>
+      )}
+      <button>
+        <Link href={'/signup'}>Регистрация</Link>
+      </button>
+      {role === 'admin' && (
+        <button>
+          <Link href={'/admin'}>Admin</Link>
+        </button>
+      )}
+      {authorised && (
+        <button>
+          <a href={server_host + '/users/logout'}>Выход</a>
+        </button>
+      )}
+      <button>
+        <Link href={'https://js-course.ru/courses/show/62b1824805964a1386560a8e'}>
+          Lesson 3.11.17
+        </Link>
+      </button>
+      <button>
+        <Link href={'/directory'}>Справочник</Link>
+      </button>
     </div>
   );
 };
