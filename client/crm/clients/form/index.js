@@ -313,17 +313,30 @@ export default function TableaddClients({ server_host }) {
       </div>
       <div className={hide}>
         <div className={styles.gridWindow}>
-          <input
-            type={'text'}
-            name={'city'}
-            placeholder={'Город'}
-            onChange={(e) => changeCity('city', e.target.value)}
-            value={addCity.city}
-          ></input>
-          <div className={styles.GroupChildrenButton}>
-            <button className={styles.button} type={'button'} onClick={directoryAddCity}>
-              добавить
+          <div className={styles.gridHeader}>
+            <div>📂</div>
+            <button onClick={displayHide} className={styles.gridButton}>
+              ✖
             </button>
+          </div>
+          <div className={styles.gridContent}>
+            <div className={styles.gridInput}>
+              <span>
+                <input
+                  type={'text'}
+                  name={'city'}
+                  placeholder={'Город'}
+                  onChange={(e) => changeCity('city', e.target.value)}
+                  value={addCity.city}
+                ></input>
+              </span>
+            </div>
+
+            <div className={styles.GroupChildrenButton}>
+              <button className={styles.button} type={'button'} onClick={directoryAddCity}>
+                добавить
+              </button>
+            </div>
           </div>
         </div>
       </div>

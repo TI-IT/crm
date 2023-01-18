@@ -1,7 +1,7 @@
 @import '../color.scss';
 
 .gridButton {
-  width: 94%;
+  width: 80%;
   cursor: pointer;
   color: $colorButtonText;
   background: $colorButtonBac;
@@ -11,7 +11,7 @@
 }
 .gridButton:hover {
   color: $colorButtonTextHover;
-  border: 2px solid $colorButtonTextHover;
+  border: 1px solid $colorButtonTextHover;
   background: $colorButtonBacHover;
   opacity: 0.8;
   font-weight: bold;
